@@ -32,6 +32,7 @@
 	}
 
 	function resetNavigation() {
+		airrow.resetPositionState();
 		rating = "";
 		navState = {
 			direction: 0,
@@ -44,6 +45,9 @@
 	}
 
 	function handleRating() {
+		if (isUploadingRating) {
+			return;
+		}
 		isUploadingRating = true;
 		const ratingUpload = airrow.rate(rating, navState.target.refCode);
 		
@@ -96,7 +100,7 @@
 				{/if}
 			</div>
 			{:else}
-			<div class="poi" transition:fade={{ duration: 1000 }}>
+			<div class="poi" in:fade={{ duration: 1000 }}>
 				<span class="continue" on:click={handleRating}>▶️</span>
 			</div>
 			{/if}

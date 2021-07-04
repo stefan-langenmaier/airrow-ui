@@ -227,8 +227,6 @@ class Airrow {
           "refCode": refCode
         };
 
-        this.resetPositionState();
-
         return fetch(`${this.apiServer}/rate`, {
             method: 'POST',
             headers: {

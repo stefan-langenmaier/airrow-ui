@@ -1,5 +1,7 @@
 export { Airrow };
 
+import { Compass } from "./compass.js";
+
 class Airrow {
 
     constructor(apiServer) {
@@ -9,6 +11,8 @@ class Airrow {
         this.sessionId = null;
         this.status = "";
         this.apiServer = apiServer;
+        this.compass = new Compass();
+        this.orientationOffset = 0;
 
         this.geoPositionWatch = null;
         
@@ -34,6 +38,7 @@ class Airrow {
     checkGeoPermissions(fun) {
         if (navigator.permissions === undefined) {
 			fun(false);
+            this.registerGeoPermissionUpdate(fun);
 		} else {
             let that = this;
 			navigator.permissions
@@ -71,7 +76,14 @@ class Airrow {
         } else if ('ondeviceorientation' in window) {
             window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
         }
+
+        this.compass.start();
+        this.compass.register(this.refreshOffset.bind(this));
     }
+
+    refreshOffset(summary) {
+        this.orientationOffset = Math.round(summary.northOffset);
+      }
 
     updateCoordinates(position) {
         const that = this;
@@ -141,10 +153,15 @@ class Airrow {
     // can only be triggered by a real user interaction
     prepareUI(fun) {
         const main = document.documentElement;
+        alert(main);
+        if (!main.requestFullscreen) {
+            // iOS cannot go fullscreen
+            fun(true);
+            return;
+        }
         const fullscreenRequest = main.requestFullscreen();
         fullscreenRequest
             .then(function () {
-                console.log("fullscreen active");
                 // TODO add events and reacquire locks if necessary
                 if ('wakeLock' in navigator) {
                     const wakeLock = navigator.wakeLock.request('screen')
@@ -171,7 +188,16 @@ class Airrow {
 
     getOrientation() {
         if (this.latestOrientation !== null) {
-            return this.latestOrientation.alpha;
+            if (this.latestOrientation.absolute == true) {
+                return this.latestOrientation.alpha;
+            } else {
+                if ('webkitCompassHeading' in this.latestOrientation) {
+                    //get absolute orientation for Safari/iOS
+                    return 360 - this.latestOrientation.webkitCompassHeading;
+                } else {
+                    return this.latestOrientation.alpha - this.orientationOffset;
+                }
+            }
         }
 
         return 0;
@@ -188,7 +214,7 @@ class Airrow {
     resetPositionState() {
         this.latestPositionState = null;
     }
-    
+
     rate(rating, refCode) {
         const params = {
           "uuid": this.sessionId,

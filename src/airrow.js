@@ -15,6 +15,7 @@ class Airrow {
         this.orientationOffset = 0;
 
         this.geoPositionWatch = null;
+        this.positionStateWatch = null;
         
 
         this.geoLocationOptions = {
@@ -24,18 +25,20 @@ class Airrow {
 
         // there can only be one
         this.geoPermissionUpdateHandler = null;
-        this.updateNavigationHandler = null;
+        this.orientationPermissionUpdateHandler = null;
+
+        this.hasOrientationEventHandler = false;
     }
 
     registerGeoPermissionUpdate(fun) {
         this.geoPermissionUpdateHandler = fun;
     }
 
-    registerUpdateNavigation(fun) {
-        this.updateNavigationHandler = fun;
+    registerOrientationPermissionUpdate(fun) {
+        this.orientationPermissionUpdateHandler = fun;
     }
 
-    checkGeoPermissions(fun) {
+    checkGeoPermission(fun) {
         if (navigator.permissions === undefined) {
 			fun(false);
             this.registerGeoPermissionUpdate(fun);
@@ -62,21 +65,57 @@ class Airrow {
 		}
     }
 
-    start() {
+    checkOrientationPermission(fun) {
+        if ( typeof( DeviceOrientationEvent ) !== "undefined" && typeof( DeviceOrientationEvent.requestPermission ) === "function" ) {
+            fun(false);
+            this.registerOrientationPermissionUpdate(fun);
+        } else {
+            fun(true);
+		}
+    }
+
+    startGeo() {
         if ( this.geoPositionWatch !== null ) return;
 
         this.geoPositionWatch = navigator.geolocation.watchPosition(
             this.updateCoordinates.bind(this),
             this.noGeoPositionAvailable.bind(this),
             this.geoLocationOptions);
-        
+
+        this.positionStateWatch = window.setInterval(this.refreshPositionState.bind(this), 1000);
+    }
+
+    startOrientation() {
+        if ( this.hasOrientationEventHandler === true ) return;
+
         if ('ondeviceorientationabsolute' in window) {
             // works only in Chrome
             window.addEventListener('deviceorientationabsolute', this.updateOrientation.bind(this));
+            this.hasOrientationEventHandler = true;
         } else if ('ondeviceorientation' in window) {
-            window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
+            if (this.orientationPermissionUpdateHandler === null) {
+                // we don't need to request permission (Firefox)
+                window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
+                this.hasOrientationEventHandler = true;
+            } else {
+                DeviceOrientationEvent.requestPermission()
+                    .then(response => {
+                        if (response === 'granted') {
+                            window.addEventListener('deviceorientation', this.updateOrientation.bind(this));
+                            this.hasOrientationEventHandler = true;
+                        } else {
+                            console.log("Orientation Response ", response);
+                            this.orientationPermissionUpdateHandler(false);
+                        }})
+                    .catch(err => {
+                        console.log("Err ", err);
+                        this.orientationPermissionUpdateHandler(false);
+                    });
+            }
         }
+    }
 
+    startCompass() {
         this.compass.start();
         this.compass.register(this.refreshOffset.bind(this));
     }
@@ -86,20 +125,30 @@ class Airrow {
       }
 
     updateCoordinates(position) {
-        const that = this;
         if (this.geoPermissionUpdateHandler !== null) {
             this.geoPermissionUpdateHandler(true);
             this.geoPermissionUpdateHandler = null;
         }
         this.latestPosition = position;
 
+        this.refreshPositionState();
+    }
+
+    refreshPositionState() {
+        // skip if we have collected data in the last second
+        if (this.latestPositionState !== null && this.latestPositionState.lastUpdate && (Date.now() - this.latestPositionState.lastUpdate < 1000)) return;
+
+        // skip if no position data
+        if (this.latestPosition === null) return;
+
+        const that = this;
         const params = {
             "uuid": this.sessionId,
             "location": {
               "lat": this.latestPosition.coords.latitude,
               "lon": this.latestPosition.coords.longitude
             },
-            "status": "",
+            "status": this.status,
             "accuracy": 10 //this.latestPosition.coords.accuracy
           };
 
@@ -115,9 +164,7 @@ class Airrow {
                     response.json()
                         .then(data => {
                             that.latestPositionState = data;
-                            if (this.updateNavigationHandler !== null) {
-                                this.updateNavigationHandler();
-                            }
+                            that.latestPositionState.lastUpdate = Date.now();
                         })
                         .catch((error) => {
                             console.error('Error during response unwraping:', error);
@@ -130,6 +177,10 @@ class Airrow {
     }
 
     updateOrientation(orientation) {
+        if (this.orientationPermissionUpdateHandler !== null) {
+            this.orientationPermissionUpdateHandler(true);
+            this.orientationPermissionUpdateHandler = null;
+        }
         this.latestOrientation = orientation;
     }
 
@@ -153,7 +204,6 @@ class Airrow {
     // can only be triggered by a real user interaction
     prepareUI(fun) {
         const main = document.documentElement;
-        alert(main);
         if (!main.requestFullscreen) {
             // iOS cannot go fullscreen
             fun(true);
@@ -182,13 +232,14 @@ class Airrow {
     }
 
     getDirection(angle) {
+        if (angle === null) return 0;
         // return (360 + (this.navState.angle + this.orientationCurrent - this.orientationOffset))%360;
         return (360 + (angle + this.getOrientation()))%360;
     }
 
     getOrientation() {
         if (this.latestOrientation !== null) {
-            if (this.latestOrientation.absolute == true) {
+            if (this.latestOrientation.absolute === true) {
                 return this.latestOrientation.alpha;
             } else {
                 if ('webkitCompassHeading' in this.latestOrientation) {

@@ -8,12 +8,11 @@
 		direction: 0,
 	};
 
+	let status = "";
 	let rating = "";
 	let isUploadingRating = false;
 	
-	let updateWatch = setInterval(() => {
-		updateNavigation();
-    }, 100);
+	let updateWatch = null;
 
 	resetNavigation();
 
@@ -21,6 +20,7 @@
 		navState = airrow.getNavState();
 		if (airrow.hasFoundTarget(navState)) {
 			clearInterval(updateWatch);
+			updateWatch = null;
 		}
 	}
 
@@ -38,9 +38,11 @@
 			direction: 0,
 		};
 		updateNavigation();
-		updateWatch = setInterval(() => {
-			updateNavigation();
-		}, 100);
+		if (updateWatch === null) {
+			updateWatch = setInterval(() => {
+				updateNavigation();
+			}, 100);
+		}
 		isUploadingRating = false;
 	}
 
@@ -56,6 +58,11 @@
 		}).catch(() => {
 			resetNavigation();
 		});
+	}
+
+	$: {
+		status = Util.filterEmojiInput(status);
+		airrow.status = status;
 	}
 
 </script>
@@ -136,7 +143,7 @@
 			</div>
 			<div class="status">
 				<span>
-					<input type="text" placeholder="🗣️" size="5"/>
+					<input type="text" bind:value={status} placeholder="🗣️" size="5"/>
 				</span>
 			</div>
 		</div>

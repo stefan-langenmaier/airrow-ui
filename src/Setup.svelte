@@ -5,22 +5,38 @@
 	export let airrow; 
 
 	let hasGeoPermission = false;
+	let hasOrientationPermission = false
 	let verifyingGeoPermission = false;
+	let verifyingOrientationPermission = false;
 	let preparingUI = false;
 
-	airrow.checkGeoPermissions(updateGeoPermission);
+	airrow.checkGeoPermission(updateGeoPermission);
+	airrow.checkOrientationPermission(updateOrientationPermission);
 
 	function updateGeoPermission(hasPermission) {
 		verifyingGeoPermission = false;
 		hasGeoPermission = hasPermission;
 		if (hasGeoPermission) {
-			airrow.start();
+			airrow.startGeo();
 		}
 	}
 
-	function checkGeoPermissions() {
+	function checkGeoPermission() {
 		verifyingGeoPermission = true;
-		airrow.start();
+		airrow.startGeo();
+	}
+
+	function updateOrientationPermission(hasPermission) {
+		verifyingOrientationPermission = false;
+		hasOrientationPermission = hasPermission;
+		if (hasOrientationPermission) {
+			airrow.startOrientation();
+		}
+	}
+
+	function checkOrientationPermission() {
+		verifyingOrientationPermission = true;
+		airrow.startOrientation();
 	}
 
 	function prepareUI() {
@@ -31,6 +47,7 @@
 	function updateUI(isReady) {
 		preparingUI = false;
 		if (isReady) {
+			airrow.startCompass();
 			$configured = isReady;
 		}
 	}
@@ -48,7 +65,20 @@
 				<span class="highlight" />
 			</div>
 			<div class="test">
-				<span class="trigger" on:click={checkGeoPermissions}>🛰️</span>
+				<span class="trigger" on:click={checkGeoPermission}>🛰️</span>
+			</div>
+		{/if}
+	{:else if !hasOrientationPermission}
+		{#if verifyingOrientationPermission}
+			<div class="test">
+				<span>⏳</span>
+			</div>
+		{:else}
+			<div class="test">
+				<span class="highlight" />
+			</div>
+			<div class="test">
+				<span class="trigger" on:click={checkOrientationPermission}>🧭</span>
 			</div>
 		{/if}
 	{:else}

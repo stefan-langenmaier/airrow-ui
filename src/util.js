@@ -10,7 +10,8 @@ export {
     isLink,
     isYoutubeLink,
     humanDistance,
-    getApiServer
+    getApiServer,
+    filterEmojiInput
 };
 
 // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
@@ -130,4 +131,15 @@ function getApiServer() {
         return "https://research.xn--rro-pla.de";
 //        return `https://api.${window.location.hostname}`;
     }
+}
+
+function filterEmojiInput(input) {
+    // https://unicode.org/reports/tr51/#Emoji_Properties
+    const regexpEmojiPresentation = /\p{Emoji}/gu;
+    let filteredInput = "";
+    const matches = input.match(regexpEmojiPresentation);
+    if (matches) {
+        filteredInput = matches.join('');
+    }
+    return filteredInput;
 }

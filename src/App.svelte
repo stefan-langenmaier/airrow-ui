@@ -35,7 +35,7 @@
 	:global(.screen) {
 		height: 100%;
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr 3fr 1fr;
 		grid-template-rows: 5fr 1fr;
 
 		grid-column-start: 1;

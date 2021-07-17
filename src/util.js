@@ -11,7 +11,9 @@ export {
     isYoutubeLink,
     humanDistance,
     getApiServer,
-    filterEmojiInput
+    filterEmojiInput,
+    reload,
+    get
 };
 
 // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
@@ -142,4 +144,19 @@ function filterEmojiInput(input) {
         filteredInput = matches.join('');
     }
     return filteredInput;
+}
+
+function reload() {
+    // reload page
+    window.location.reload();
+}
+
+async function get(link) {
+    const res = await fetch(link);
+
+    if (res.ok) {
+        return res.text();
+    } else {
+        throw new Error(res);
+    }
 }

@@ -89,11 +89,11 @@
 					{:else if Util.isModel(navState.target.mimeType)}
 					<model-viewer src="{airrow.getDownloadLink(navState)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls></model-viewer>
 					{:else if Util.isLink(navState.target.mimeType)}
-						{#await fetch(airrow.getDownloadLink(navState))}
+						{#await Util.get(airrow.getDownloadLink(navState))}
 						<span class="loading">⏳</span>
 						{:then link}
 							{#if Util.isYoutubeLink(link)}
-							<iframe title="inlined-video" src="${link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+							<iframe title="inlined-video" src="{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 							{:else}
 							<a href="{link}" target="_blank">🔗↗️</a>
 							{/if}
@@ -292,12 +292,30 @@
 		font-size: 40vh;
 	}
 
+	.poi a {
+		font-size: 20vh;
+	}
+
 	.found {
 		background: radial-gradient(circle at 50%, lightgrey, orange 100%);;
 	}
 
 	.poi span img {
 		max-width: 90vw;
-		max-height: 40vh;
+		max-height: 50vh;
+	}
+
+	.poi span iframe {
+		width: 90vw;
+		height: 50vh;
+	}
+
+	.poi span model-viewer {
+		width: 90vw;
+		height: 50vh;
+	}
+
+	.poi span audio {
+		width: 90vw;
 	}
 </style>

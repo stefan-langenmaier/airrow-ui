@@ -57,6 +57,21 @@
 </div>
 
 <style>
+	.logo {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 1;
+		grid-row-end: 2;
+	}
+
+	.logo svg {
+		max-height: 80vh;
+		margin: auto;
+	}
 	.finished .red {
 		fill: rgba(255, 0, 0, 1);
 	}

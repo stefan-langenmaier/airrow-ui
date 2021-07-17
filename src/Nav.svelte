@@ -268,8 +268,8 @@
 
 	.rating span {
 		margin: auto;
-		font-size: 6vh;
-		padding: 3vh;
+		font-size: 5vh;
+		padding: 1vh;
 	}
 
 	.rating input[type=radio] {

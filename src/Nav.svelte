@@ -8,7 +8,7 @@
 		direction: 0,
 	};
 
-	let status = "";
+	let status = airrow.status;
 	let rating = "";
 	let isUploadingRating = false;
 	

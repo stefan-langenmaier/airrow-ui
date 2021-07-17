@@ -28,6 +28,11 @@
 		airrow.sessionId = Util.getSessionId();
 		$accepted = Util.isLegalVerified();
 
+		const hash = window.location.hash;
+		if (hash !== "") {
+			airrow.status = decodeURI(hash.substring(1));
+		}
+
 		bootReady = true;
 		continueIfReady();
 	}

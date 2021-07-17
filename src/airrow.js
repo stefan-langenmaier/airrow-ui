@@ -335,5 +335,23 @@ class Airrow {
             return false;
         }
     }
+
+    deleteAccount() {
+        const params = {
+          "uuid": this.sessionId
+        };
+
+        // remove cookies
+        document.cookie = 'sessionId=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'legal-verified=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+        return fetch(`${this.apiServer}/delete-account`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+      }
     
 }

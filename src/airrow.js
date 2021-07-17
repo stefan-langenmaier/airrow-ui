@@ -287,6 +287,26 @@ class Airrow {
             });
     }
 
+    async getPersonal() {
+        const params = {
+            "uuid": this.sessionId
+        };
+
+        const res = await fetch(`${this.apiServer}/personal`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error(res);
+        }
+    }
+
     getDownloadLink(navState) {
         if (!this.hasDownloadLink(navState)) {
             return "#";

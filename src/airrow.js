@@ -209,6 +209,13 @@ class Airrow {
             fun(true);
             return;
         }
+        const isFirefox = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1);
+        if (isFirefox) {
+            // firefox has screen issues in fullscreen mode
+            // the keyboard is an overlay and does not count as screen real estate
+            fun(true);
+            return;
+        }
         const fullscreenRequest = main.requestFullscreen();
         fullscreenRequest
             .then(function () {

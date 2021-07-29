@@ -2,6 +2,7 @@ export {
     getSessionId,
     isLegalVerified,
     setLegalVerified,
+    setDocHeight,
     registerDocHeightListeners,
     isImage,
     isAudio,

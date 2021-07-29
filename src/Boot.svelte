@@ -22,6 +22,7 @@
 	}
 
 	function boot() {
+		Util.setDocHeight();
 		Util.registerDocHeightListeners();
 		airrow.apiServer = Util.getApiServer();
 

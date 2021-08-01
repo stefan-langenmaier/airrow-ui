@@ -34,7 +34,7 @@
 				<span on:click={handleLegal}>▶️</span>
 			</div>
 			<div class="accept help">
-				<span>👆</span>
+				<span on:click={handleLegal}>👆</span>
 			</div>
 		</div>
 		{:else}
@@ -116,7 +116,6 @@
 		10% {
 			transform: translate(50%, 0%);
 			opacity: 1;
-			
 		}
 		11% {
 			opacity: 0;

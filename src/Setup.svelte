@@ -67,6 +67,9 @@
 			<div class="test">
 				<span class="trigger" on:click={checkGeoPermission}>🛰️</span>
 			</div>
+			<div class="test help">
+				<span on:click={checkGeoPermission}>👆</span>
+			</div>
 		{/if}
 	{:else if !hasOrientationPermission}
 		{#if verifyingOrientationPermission}
@@ -80,6 +83,9 @@
 			<div class="test">
 				<span class="trigger" on:click={checkOrientationPermission}>🧭</span>
 			</div>
+			<div class="test help">
+				<span on:click={checkOrientationPermission}>👆</span>
+			</div>
 		{/if}
 	{:else}
 		{#if preparingUI}
@@ -92,6 +98,9 @@
 			</div>
 			<div class="test">
 				<span class="trigger" on:click={prepareUI}>🚀</span>
+			</div>
+			<div class="test help">
+				<span on:click={prepareUI}>👆</span>
 			</div>
 		{/if}
 	{/if}
@@ -112,6 +121,44 @@
 	.test span {
 		font-size: 30vh;
 		margin: auto;
+	}
+
+	.help {
+		margin: auto;
+	}
+
+	.help span {
+		font-size: 10vh;
+		z-index: 1;
+		animation-name: show-help;
+		animation-delay: 3s;
+		animation-duration: 12s;
+		animation-iteration-count: infinite;
+
+		transform: translate(200%, 0%);
+		opacity: 0;
+	}
+
+	@keyframes show-help {
+		0% {
+			transform: translate(200%, 0%);
+			opacity: 1;
+		}
+		10% {
+			transform: translate(50%, 0%);
+			opacity: 1;
+		}
+		11% {
+			opacity: 0;
+		}
+		12% {
+			transform: translate(200%, 0%);
+			opacity: 0;
+		}
+		100% {
+			transform: translate(200%, 0%);
+			opacity: 0;
+		}
 	}
 
 	.highlight {

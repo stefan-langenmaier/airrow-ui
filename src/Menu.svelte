@@ -54,7 +54,10 @@
 
 	.burger span svg {
 		padding: 3vh;
-		max-height: 9vh;
+		max-height: 10vh;
+		max-width: 10vw;
+		width: 100%;
+		height: 100%;
 	}
 	.menu {
 		display: grid;

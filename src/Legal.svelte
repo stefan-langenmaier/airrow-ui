@@ -39,7 +39,10 @@
 		</div>
 		{:else}
 		<div class="options" transition:fade="{{duration: 300}}">
-			<iframe src="/legal.html" title="📃"><a href="https://github.com/stefan-langenmaier/airrow/wiki/Legal" target="_blank">📃</a></iframe>
+			<ul>
+				<li><a href="https://github.com/stefan-langenmaier/airrow/wiki/GDPR-De">🇩🇪 Datenschutzerklärung</a></li>
+				<li><a href="https://github.com/stefan-langenmaier/airrow/wiki/EULA-De">🇩🇪 Nutzungsbedingungen</a></li>
+			</ul>
 		</div>
 		{/if}
 	</div>
@@ -51,12 +54,6 @@
 		-o-transform: scale(4);
 		transform: scale(4);
 		margin: auto;
-	}
-
-	iframe {
-		width: 80%;
-		height: 80%;
-		border: 0px;
 	}
 
 	.legal {

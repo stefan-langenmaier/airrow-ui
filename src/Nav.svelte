@@ -229,7 +229,7 @@
 	}
 
 	.direction span {
-		font-size: 30vh;
+		font-size: 25vh;
 		margin: auto;
 	}
 

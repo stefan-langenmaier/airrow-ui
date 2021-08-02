@@ -99,8 +99,8 @@
 	}
 
 	.list li {
-		font-size: 5vh;
-		padding: 0.1em;
+		font-size: 4vh;
+		padding: 0.2em;
 		text-align: center;
 	}
 

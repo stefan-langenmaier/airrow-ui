@@ -24,8 +24,8 @@
 					<li on:click={() => switchScreen('personal')}>📊</li>
 					<li class="disabled">🏆</li>
 					<li class="disabled">📍</li>
-					<li class="disabled">🗺️</li>
-					<li class="disabled">☁️</li>
+					<li on:click={() => switchScreen('createdPoints')}>🗺️</li>
+					<li on:click={() => switchScreen('upload')}>☁️</li>
 					<li on:click={() => switchScreen('share')}>🔗</li>
 					
 					<li class="seperator">&nbsp;</li>

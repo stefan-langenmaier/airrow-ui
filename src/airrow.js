@@ -359,6 +359,55 @@ class Airrow {
             },
             body: JSON.stringify(params),
             });
-      }
+    }
+
+    uploadPOI(fileInput) {
+        const file = fileInput.files[0];
+        const meta = {
+        "creator": this.sessionId,
+        "location": {
+            "lat": this.latestPosition.coords.latitude,
+            "lon": this.latestPosition.coords.longitude
+        },
+        "status": this.status,
+        "accuracy": 10, //this.latestPosition.coords.accuracy
+        "fileName": file.name
+        };
+
+        var formData = new FormData();
+        formData.append('file', file, file.name);
+        formData.append('meta', JSON.stringify(meta));
+
+        return fetch(`${this.apiServer}/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+    }
+
+    async getCreatedPoints() {
+        if (this.latestPosition === null) return {points: []};
+
+        const params = {
+            "uuid": this.sessionId,
+            "location": {
+                "lat": this.latestPosition.coords.latitude,
+                "lon": this.latestPosition.coords.longitude
+            },
+        };
+
+        const res = await fetch(`${this.apiServer}/points/list`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error(res);
+        }
+    }
     
 }

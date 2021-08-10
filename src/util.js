@@ -14,7 +14,8 @@ export {
     getApiServer,
     filterEmojiInput,
     reload,
-    get
+    get,
+    mimeToEmoji
 };
 
 // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
@@ -159,5 +160,19 @@ async function get(link) {
         return res.text();
     } else {
         throw new Error(res);
+    }
+}
+
+function mimeToEmoji(mimeType) {
+    switch (true) {
+      case /image\//.test(mimeType):
+        return '🖼️';
+      case /audio\//.test(mimeType):
+        return '🎶';
+      case /application\/x-matroska/.test(mimeType):
+      case /video\//.test(mimeType):
+        return '🎞️';
+      default:
+        return '❓';
     }
 }

@@ -409,5 +409,25 @@ class Airrow {
             throw new Error(res);
         }
     }
+
+    async deletePoint(poiUuid) {
+        const params = {
+            "uuid": poiUuid
+        };
+
+        const res = await fetch(`${this.apiServer}/points/delete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+
+        if (res.ok) {
+            return "";
+        } else {
+            throw new Error(res);
+        }
+    }
     
 }

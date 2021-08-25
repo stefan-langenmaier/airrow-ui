@@ -116,15 +116,15 @@ function humanDistance(distance_in_meters) {
 
     if (distance_in_meters < 1000) {
         const rounded = Math.round(distance_in_meters/10)*10;
-        return `${Math.round(rounded)}m`;
+        return `${rounded}m`;
     }
 
     if (distance_in_meters < 10000) {
         const rounded = Math.round(distance_in_meters/100)/10;
-        return `${Math.round(rounded)}km`;
+        return `${rounded}km`;
     } else {
         const rounded = Math.round(distance_in_meters/1000);
-        return `${Math.round(rounded)}km`;
+        return `${rounded}km`;
     }
 }
 

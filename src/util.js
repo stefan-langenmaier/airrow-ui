@@ -129,11 +129,10 @@ function humanDistance(distance_in_meters) {
 }
 
 function getApiServer() {
-    if (window.location.hostname === "localhost") {
-        return "https://research.xn--rro-pla.de";
+    if ('process.env.CUSTOM_API_ENDPOINT' !== "") {
+        return 'process.env.CUSTOM_API_ENDPOINT';
     } else {
-        return "https://research.xn--rro-pla.de";
-//        return `https://api.${window.location.hostname}`;
+        return `https://api.${window.location.hostname}`;
     }
 }
 

@@ -1,7 +1,7 @@
 FROM node:14
+ARG CUSTOM_API_ENDPOINT
 WORKDIR /app
 COPY ./ /app
-RUN pwd ; ls
 RUN npm run build
 
 FROM nginx:latest

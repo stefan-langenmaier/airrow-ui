@@ -191,8 +191,8 @@ class Compass {
         this.isNew(this.coordinatesLatest)) {
       this.buffer.push({
         timestamp:   Date.now(),
-        orientation: Object.assign({}, this.orientationLatest), // is this needed
-        coordinates: Object.assign({}, this.coordinatesLatest) // is this needed
+        orientation: {...this.orientationLatest},
+        coordinates: {...this.coordinatesLatest}
       });
     }
   }

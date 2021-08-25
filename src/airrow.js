@@ -263,7 +263,7 @@ class Airrow {
 
     getNavState() {
         // create a copy of the position state
-        const navState = Object.assign({}, this.latestPositionState);
+        const navState = {...this.latestPositionState};
         navState.direction = this.getDirection(navState.angle);
 
         return navState;

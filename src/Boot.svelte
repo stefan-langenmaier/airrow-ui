@@ -1,7 +1,11 @@
 <script>
-	import { accepted, booted, api } from './state.js';
+	import { addMessages, init, getLocaleFromNavigator } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
+
+	import { accepted, booted } from './state.js';
 	import * as Util from './util.js'
+	import en from './i18n/en.json';
+	import de from './i18n/de.json';
 
 	export let airrow;
 
@@ -25,6 +29,14 @@
 		Util.setDocHeight();
 		Util.registerDocHeightListeners();
 		airrow.apiServer = Util.getApiServer();
+
+		addMessages('en', en);
+		addMessages('de', de);
+
+		init({
+			fallbackLocale: 'de',
+			initialLocale: getLocaleFromNavigator(),
+		});
 
 		airrow.sessionId = Util.getSessionId();
 		$accepted = Util.isLegalVerified();

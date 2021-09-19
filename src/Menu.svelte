@@ -20,11 +20,12 @@
 		<div class="menu" transition:fade={{ duration: 1000 }}>
 			<div class="list">
 				<ul>
+					<li on:click={() => switchScreen('map')}>🗺️</li>
 					<li on:click={() => switchScreen('nav')}>🧭</li>
 					<li on:click={() => switchScreen('personal')}>📊</li>
 					<li class="disabled">🏆</li>
 					<li class="disabled">📍</li>
-					<li on:click={() => switchScreen('createdPoints')}>🗺️</li>
+					<li on:click={() => switchScreen('createdPoints')}>🌇</li>
 					<li on:click={() => switchScreen('upload')}>☁️</li>
 					<li on:click={() => switchScreen('share')}>🔗</li>
 					

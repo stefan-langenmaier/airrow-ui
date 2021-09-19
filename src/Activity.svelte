@@ -4,6 +4,7 @@
 	import { screen } from './state.js';
 
 	import Menu from './Menu.svelte';
+	import Map from './Map.svelte';
 	import Nav from './Nav.svelte';
 	import Personal from './Personal.svelte';
 	import DeleteAccount from './DeleteAccount.svelte';
@@ -16,7 +17,9 @@
 
 <div class="screen" transition:fade={{ duration: 1000 }}>
 	<Menu />
-	{#if $screen == 'nav'}
+	{#if $screen == 'map'}
+	<Map airrow={airrow} />
+	{:else if $screen == 'nav'}
 	<Nav airrow={airrow} />
 	{:else if $screen == 'personal'}
 	<Personal airrow={airrow} />

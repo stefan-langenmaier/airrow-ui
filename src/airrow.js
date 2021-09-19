@@ -429,5 +429,31 @@ class Airrow {
             throw new Error(res);
         }
     }
+
+    async getPublicPoints(position) {
+        if (position === null) return {points: []};
+
+        const params = {
+            "uuid": this.sessionId,
+            "location": {
+                "lat": position.coords.latitude,
+                "lon": position.coords.longitude
+            },
+        };
+
+        const res = await fetch(`${this.apiServer}/points/list/public`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error(res);
+        }
+    }
     
 }

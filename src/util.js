@@ -164,14 +164,16 @@ async function get(link) {
 
 function mimeToEmoji(mimeType) {
     switch (true) {
-      case /image\//.test(mimeType):
-        return '🖼️';
-      case /audio\//.test(mimeType):
-        return '🎶';
-      case /application\/x-matroska/.test(mimeType):
-      case /video\//.test(mimeType):
-        return '🎞️';
-      default:
-        return '❓';
+        case /image\//.test(mimeType):
+            return '🖼️';
+        case /audio\//.test(mimeType):
+            return '🎶';
+        case /application\/x-matroska/.test(mimeType):
+        case /video\//.test(mimeType):
+            return '🎞️';
+        case /model\/gltf-binary/.test(mimeType):
+            return '🗿';
+        default:
+            return '❓';
     }
 }

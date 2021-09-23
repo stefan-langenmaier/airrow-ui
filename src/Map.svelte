@@ -1,6 +1,6 @@
 <script>
 	import {onMount} from "svelte";
-	import {LeafletMap, TileLayer, Marker, Icon, Popup} from 'svelte-leafletjs';
+	import {LeafletMap, TileLayer, Marker, Popup} from 'svelte-leafletjs';
 	import L from 'leaflet';
 	import { screen } from './state.js';
 	import * as Util from './util.js';
@@ -28,7 +28,8 @@
 	}
 
 	function viewPoint(refCode) {
-		alert(refCode);
+		airrow.targetRefCode = refCode;
+		$screen = 'view';
 	}
 
 	function handleMapChange() {
@@ -74,7 +75,7 @@
 							oder
 						</p>
 						<p>
-							<span on:click={() => viewPoint(m.refCode)}>Ansicht (inaktiv): 🔍</span>
+							<span on:click={() => viewPoint(m.refCode)}>Ansicht: 🔍</span>
 						</p>
 					</div>
 				</Popup>

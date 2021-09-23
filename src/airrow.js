@@ -324,11 +324,26 @@ class Airrow {
         return `${this.apiServer}/download/${navState.target.fileHash}`
     }
 
+    getTargetDownloadLink(target) {
+        if (!this.hasTargetDownloadLink(target)) {
+            return "#";
+        }
+        return `${this.apiServer}/download/${target.fileHash}`
+    }
+
     hasDownloadLink(navState) {
         if (navState === undefined ||  navState === null) {
             return false;
         }
         if (navState.target.fileHash !== "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    hasTargetDownloadLink(target) {
+        if (target.fileHash !== "") {
             return true;
         } else {
             return false;
@@ -442,6 +457,27 @@ class Airrow {
         };
 
         const res = await fetch(`${this.apiServer}/points/list/public`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(params),
+            });
+
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw new Error(res);
+        }
+    }
+
+    async getTarget(refCode) {
+        const params = {
+            "uuid": this.sessionId,
+            "refCode": refCode
+        };
+
+        const res = await fetch(`${this.apiServer}/refresh/target`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',

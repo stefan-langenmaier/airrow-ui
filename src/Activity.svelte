@@ -11,6 +11,7 @@
 	import Share from './Share.svelte';
 	import Upload from './Upload.svelte';
 	import CreatedPoints from './CreatedPoints.svelte';
+	import View from './View.svelte';
 
 	export let airrow; 
 </script>
@@ -31,6 +32,8 @@
 	<Upload airrow={airrow} />
 	{:else if $screen == 'createdPoints'}
 	<CreatedPoints airrow={airrow} />
+	{:else if $screen == 'view'}
+	<View airrow={airrow} />
 	{/if}
 </div>
 

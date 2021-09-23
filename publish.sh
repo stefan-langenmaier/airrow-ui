@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "build default"
-docker build . -t slangenmaier/airrow-ui
+docker build . --build-arg CUSTOM_API_ENDPOINT="https://research.xn--rro-pla.de"  -t slangenmaier/airrow-ui
 docker push slangenmaier/airrow-ui
 
 echo "build donumenta"

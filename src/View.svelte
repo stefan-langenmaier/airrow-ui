@@ -1,7 +1,8 @@
 <script>
 	import { fade } from 'svelte/transition';
 	import { screen } from './state.js';
-	import * as Util from './util.js'
+	import * as Util from './util.js';
+	import '@google/model-viewer';
 
 	export let airrow;
 	let targetPromise = airrow.getTarget(airrow.targetRefCode);

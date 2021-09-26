@@ -1,5 +1,5 @@
 <script>
-	import {onMount} from "svelte";
+	import {onMount, onDestroy} from "svelte";
 	import {LeafletMap, TileLayer, Marker, Popup} from 'svelte-leafletjs';
 	import L from 'leaflet';
 	import { screen } from './state.js';
@@ -50,6 +50,11 @@
 	onMount(() => {
 		handleMapChange();
     });
+
+	onDestroy(() => {
+		// important for cleanup
+		// do not remove
+	});
 </script>
 
 <div class="screen">

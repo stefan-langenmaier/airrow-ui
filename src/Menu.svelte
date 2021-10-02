@@ -15,62 +15,87 @@
 
 </script>
 
-<div class="screen">
-	{#if isOpen }
-		<div class="menu" transition:fade={{ duration: 1000 }}>
-			<div class="list">
-				<ul>
-					<li on:click={() => switchScreen('map')}>🗺️</li>
-					<li on:click={() => switchScreen('nav')}>🧭</li>
-					<li on:click={() => switchScreen('personal')}>📊</li>
-					<li class="disabled">🏆</li>
-					<li class="disabled">📍</li>
-					<li on:click={() => switchScreen('createdPoints')}>🌇</li>
-					<li on:click={() => switchScreen('upload')}>☁️</li>
-					<li on:click={() => switchScreen('share')}>🔗</li>
-					
-					<li class="seperator">&nbsp;</li>
-					<li class="disabled">👤</li>
-					<li on:click={() => switchScreen('delete')}>❌</li>
-				</ul>
-			</div>
-		</div>
-	{/if}
-	<div class="burger">
-		<span on:click={toggleMenu}>
-			<svg viewBox="0 0 100 100" version="1.1"
-				xmlns="http://www.w3.org/2000/svg">
-				<rect class="line" x="0" y="25" width="100" height="10"/>
-				<rect class="line" x="0" y="50" width="100" height="10"/>
-				<rect class="line" x="0" y="75" width="100" height="10"/>
+<nav class="menu">
+	<a href="#" on:click={() => switchScreen('map')} class="menu__link menu__link--active">
+		<span class="menu__icon">
+			<svg viewBox="0 0 32 32">
+				<use xlink:href="/assets/icons/menu/pin-ref.svg#pin"></use>
 			</svg>
 		</span>
+		<span class="menu__text">Karte</span>
+	</a>
+	<a href="#" on:click={() => switchScreen('map')} class="menu__link">
+		<span class="menu__icon"><img src="/assets/icons/menu/art.svg" alt="Kunstwerk"/></span>
+		<span class="menu__text">Kunstwerk</span>
+	</a>
+	<a href="#" on:click={() => switchScreen('map')} class="menu__link">
+		<span class="menu__icon"><img src="/assets/icons/menu/donumenta.svg" alt="Donumenta"/></span>
+		<span class="menu__text">donumenta</span>
+	</a>
+	<a href="#" on:click={() => switchScreen('map')} class="menu__link">
+		<span class="menu__icon"><img src="/assets/icons/menu/news.svg" alt="News"/></span>
+		<span class="menu__text">News</span>
+	</a>
+	<a href="#" on:click={() => switchScreen('map')} class="menu__link">
+		<span class="menu__icon"><img src="/assets/icons/menu/more.svg" alt="Weitere Infos"/></span>
+		<span class="menu__text">Weitere Infos</span>
+	</a>
+</nav>
+<nav class="submenu">
+	<div>
+		Language
 	</div>
-</div>
+	<div>
+		Pages
+	</div>
+	<div>
+		Social
+	</div>
+</nav>
 
 <style>
-	.line {
-		fill: rgba(0, 0, 0, 1);
-	}
-
-	.burger span svg {
-		padding: 3vh;
-		max-height: 10vh;
-		max-width: 10vw;
-		width: 100%;
-		height: 100%;
-	}
 	.menu {
-		display: grid;
-		grid-template-columns: 1fr 2fr;
-		grid-template-rows: 1fr;
+		display: flex;
 
-		grid-column-start: 1;
-		grid-column-end: -1;
-		grid-row-start: 1;
-		grid-row-end: 2;
+		flex-grow: 1;
 
-		z-index: 1;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+		/*box-shadow: 0 -5px 10px #333;*/
+		z-index: 1000;
+		position: relative;
+
+		overflow-x: auto;
+
+	}
+
+	.menu__link {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+
+		overflow: hidden;
+		white-space: nowrap;
+
+		color: var(--font-color);
+		text-decoration: none;
+	}
+
+	.menu__link--active {
+		color: var(--font-color-active);
+	}
+
+	.menu__icon svg {
+		height: 2em;
+	}
+
+	.submenu {
+		position: absolute;
+		z-index: 100000;
+		right: 0em;
+		width: 50%;
+		transform: translateY(-100%);
 	}
 
 	.list {

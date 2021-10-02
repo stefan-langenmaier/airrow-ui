@@ -35,12 +35,22 @@
 	:global(.screen) {
 		height: 100%;
 		display: grid;
-		grid-template-columns: 1fr 3fr 1fr;
+		grid-template-columns: 1fr;
 		grid-template-rows: 5fr 1fr;
 
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 1;
 		grid-row-end: -1;
+	}
+
+	:global(:root){
+		--background-color: #e4e9ee;
+		--font-color:  #8d969c;
+		--font-color-active: #0093d7;
+	}
+
+	:global(body){
+		background-color: var(--background-color);
 	}
 </style>

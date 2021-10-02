@@ -4,6 +4,8 @@
 	import L from 'leaflet';
 	import { screen } from './state.js';
 	import * as Util from './util.js';
+
+	import Menu from './Menu.svelte';
 	
 	export let airrow;
 
@@ -58,45 +60,59 @@
 </script>
 
 <div class="screen">
-	<LeafletMap bind:this={leafletMap} options={mapOptions}>
-        <TileLayer url={tileUrl} options={tileLayerOptions}/>
-		{#if markers}
-		{#await markers then data}
-			{#each data.points as m}
-			<Marker icon={iconOptions} latLng={[m.location.lat, m.location.lon]}>
-				<Popup>
-					<div class="overview">
-						<h2>Objektname</h2>
-						
-						<div class="preview">
-							{Util.mimeToEmoji(m.mimeType)}
+	<div class="map">
+		<LeafletMap bind:this={leafletMap} options={mapOptions}>
+			<TileLayer url={tileUrl} options={tileLayerOptions}/>
+			{#if markers}
+			{#await markers then data}
+				{#each data.points as m}
+				<Marker icon={iconOptions} latLng={[m.location.lat, m.location.lon]}>
+					<Popup>
+						<div class="overview">
+							<h2>Objektname</h2>
+							
+							<div class="preview">
+								{Util.mimeToEmoji(m.mimeType)}
+							</div>
 						</div>
-					</div>
-					<div class="actions">
-						<p>
-							<span on:click={() => startNav(m.status)}>Suche: ▶️</span>
-						</p>
-						<p>
-							oder
-						</p>
-						<p>
-							<span on:click={() => viewPoint(m.refCode)}>Ansicht: 🔍</span>
-						</p>
-					</div>
-				</Popup>
-			</Marker>
-			{/each}
-		{/await}
-		{/if}
-    </LeafletMap>
+						<div class="actions">
+							<p>
+								<span on:click={() => startNav(m.status)}>Suche: ▶️</span>
+							</p>
+							<p>
+								oder
+							</p>
+							<p>
+								<span on:click={() => viewPoint(m.refCode)}>Ansicht: 🔍</span>
+							</p>
+						</div>
+					</Popup>
+				</Marker>
+				{/each}
+			{/await}
+			{/if}
+		</LeafletMap>
+	</div>
+	<div class="menu">
+		<Menu />
+	</div>
 </div>
 
 <style>
-	:global(.leaflet-container) {
+	.map {
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 1;
 		grid-row-end: 2;
+	}
+
+	.menu {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 2;
+		grid-row-end: -1;
+
+		display: flex;
 	}
 
 	:global(.leaflet-popup-content .overview h2) {

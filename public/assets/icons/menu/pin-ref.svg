@@ -1,0 +1,6 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+    <g id="pin" transform="translate(5.185 4.137)" stroke="currentcolor" stroke-width="2" fill="none" fill-rule="evenodd">
+        <path d="M11.146 25.727S0 19.575 0 11.594C0 2.177 6.161 0 11.146 0c4.588 0 10.483 2.463 10.483 11.594 0 8.241-10.483 14.133-10.483 14.133z"/>
+        <circle cx="10.815" cy="9.547" r="4.504"/>
+    </g>
+</svg>

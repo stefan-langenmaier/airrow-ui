@@ -4,62 +4,61 @@
 	import { accepted } from './state.js';
 	import * as Util from './util.js'
 
-	let checked = false;
+	let step = "welcome";
+
+	function next(nextStep) {
+		step = nextStep;
+	}
 
 	function handleLegal() {
-		if (checked) {
-			$accepted = true;
-			Util.setLegalVerified(checked);
-		}
+		Util.setLegalVerified(true);
+		$accepted = true;
 	}
 </script>
 
 <div class="screen" transition:fade="{{duration: 1000}}">
-	<div class="legal">
-		<div class="input">
-			<input type="checkbox" bind:checked={checked} >
-		</div>
-		{#if !checked}
-		<div class="input help">
-			<span>👆</span>
-		</div>
-		<div class="input">
-			<span class="highlight"></span>
-		</div>
-		{/if}
+	{#if step === "welcome"}
+	<div class="step">
+		<div class="header"></div>
+		<div class="description">
+			<h1>donumenta art goes VR/AR</h1>
 
-		{#if checked}
-		<div class="options" transition:fade="{{duration: 300}}">
-			<div class="accept continue">
-				<span on:click={handleLegal}>▶️</span>
-			</div>
-			<div class="accept help">
-				<span on:click={handleLegal}>👆</span>
-			</div>
+			<p>
+				Herzlich Wilkommen in der augmented reality app dagva.donumenta.de 
+				2017 initiierte und etablierte der donumenta e.V. das internationale Artist in Residence-Programm (AiR) "HERITAGE TODAY/TOMORROW" für temporäre Interventionen im öffentlichen Raum in Regensburg. Seither kommen jährlich 4-5 internationale Kuenstler*innen und entwickeln Konzepte und Projekte, die im öffentlichen Raum in Regensburg realisiert werden. 
+				In dieser App haben Sie die Möglichkeit das Engagement des donumenta e.V. ortsunabhängig im Internet abzurufen.
+				Nach Freigabe ihres Standortes werden sia via GPS zu den Kunstwerken geführt.  
+				Wenn Sie den Zielort erreicht haben, können Sie mit Hilfe der App Anwendung die temporären bereits rückgebauten Kunstwerke virtuell wieder zum Leben zu erwecken.
+				Im Menü werden je nach Standort eine oder mehrere verschiedene 3D Installationen in AR-Ebenen angezeigt.
+			</p>
 		</div>
-		{:else}
-		<div class="options" transition:fade="{{duration: 300}}">
-			<ul>
-				<li><a href="https://github.com/stefan-langenmaier/airrow/wiki/GDPR-De">🇩🇪 Datenschutzerklärung</a></li>
-				<li><a href="https://github.com/stefan-langenmaier/airrow/wiki/EULA-De">🇩🇪 Nutzungsbedingungen</a></li>
-			</ul>
+		<div class="nav">
+			<button on:click="{() => next('legal')}">Weiter</button>
 		</div>
-		{/if}
 	</div>
+	{:else}
+	<div class="step">
+		<div class="header"></div>
+		<div class="description">
+			<h1>Unsere AGB und Datenschutzerklärung</h1>
+
+			<p>
+				<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">Impressum und Datenschutz</a>	
+			</p>
+		</div>
+		<div class="nav">
+			<button on:click="{handleLegal}">Ich stimme zu</button>
+		</div>
+	</div>
+	{/if}
 </div>
 
 <style>
-	input[type=checkbox] {
-		-webkit-transform: scale(4);
-		-o-transform: scale(4);
-		transform: scale(4);
-		margin: auto;
-	}
 
-	.legal {
+	.step {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 3fr;
+		grid-template-rows: 3fr 4fr 1fr;
 
 		grid-column-start: 1;
 		grid-column-end: -1;
@@ -67,107 +66,45 @@
 		grid-row-end: -1;
 	}
 
-	.options {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
+	.description {
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 2;
-		grid-row-end: -1;
+		grid-row-end: 3;
+
+		padding: 2em;
+
+		max-height: 40vh;
+		overflow: scroll;
 	}
 
-	.input {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
+	.header {
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 1;
 		grid-row-end: 2;
+
+		background-image: url('/assets/images/logo.png');
+		background-size: cover;
+		background-position: center;
+		background-color: white;
+		
 	}
 
-	.help {
-		margin: auto;
-	}
-
-	.help span {
-		font-size: 10vh;
-		z-index: 1;
-		animation-name: show-help;
-		animation-delay: 3s;
-		animation-duration: 12s;
-		animation-iteration-count: infinite;
-
-		transform: translate(200%, 0%);
-		opacity: 0;
-	}
-
-	@keyframes show-help {
-		0% {
-			transform: translate(200%, 0%);
-			opacity: 1;
-		}
-		10% {
-			transform: translate(50%, 0%);
-			opacity: 1;
-		}
-		11% {
-			opacity: 0;
-		}
-		12% {
-			transform: translate(200%, 0%);
-			opacity: 0;
-		}
-		100% {
-			transform: translate(200%, 0%);
-			opacity: 0;
-		}
-	}
-
-	.accept {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
+	.nav {
 		grid-column-start: 1;
 		grid-column-end: -1;
-		grid-row-start: 1;
+		grid-row-start: 3;
 		grid-row-end: -1;
-	}
-
-	.continue {
+		
 		margin: auto;
-		font-size: 40vh;
 	}
 
-	.highlight {
-		border-radius:50%;
-		border: 3em solid white;
-
-		box-sizing: border-box;
-		animation: pulsing 2s infinite;
-		z-index: -1;
-
-		width: 5em;
-		margin: auto;
-		height: 5em;
-	}
-
-	@keyframes pulsing {
-		0% {
-			transform: scale(0);
-			opacity: 1;
-		}
-		70% {
-			transform: scale(1);
-			opacity: 0;
-		}
-		100% {
-			transform: scale(0);
-			opacity: 0;
-		}
+	.nav button {
+		border-radius: 1.5em;
+		color: var(--font-color-button);
+		background-color: var(--background-color-button);
+		padding: 1em;
+		font-size: large;
 	}
 </style>

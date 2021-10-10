@@ -45,10 +45,7 @@
 
 		airrow.sessionId = Util.getSessionId();
 
-		// TODO remove the lower lines once the screens are updated
-		//$accepted = Util.isLegalVerified();
-		$accepted = true;
-		$configured = true;
+		$accepted = Util.isLegalVerified();
 
 		const hash = window.location.hash;
 		if (hash !== "") {

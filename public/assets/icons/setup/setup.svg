@@ -1,0 +1,21 @@
+<svg width="196" height="196" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-7.7%" y="-6.3%" width="115.4%" height="115.4%" filterUnits="objectBoundingBox" id="a">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/>
+            <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0.214548597 0 0 0 0 0.237797284 0 0 0 0 0.264798814 0 0 0 0.208888767 0" in="shadowBlurOuter1"/>
+        </filter>
+        <circle id="b" cx="98" cy="98" r="71.25"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <circle fill-opacity=".15" fill="#6E7E93" cx="98" cy="98" r="98"/>
+        <g stroke-linecap="square">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <use stroke="#AFCD42" stroke-width="2" fill="#FFF" xlink:href="#b"/>
+        </g>
+        <circle fill="#AFCD42" cx="98" cy="98" r="59.5"/>
+        <path d="M73.75 73.75h48.5v48.5h-48.5v-48.5zm6.316 28.474c0-1.158.947-2.106 2.131-2.106 1.158 0 2.106.948 2.106 2.106v6.5l24.42-24.421h-6.5a2.111 2.111 0 0 1-2.105-2.106c0-1.184.948-2.131 2.106-2.131h11.605c.29 0 .579.079.842.184l.026.026h.027l.026.027h.026l.027.026h.026l.026.026h.027l.026.027.053.026c.052.026.078.053.131.079v.026h.026v.026h.027l.026.027.026.026.027.026h.026l.026.027v.026l.027.026.052.027.027.052.026.027.026.052h.027l.026.027.026.026v.026c.026.027.053.08.08.105v.027l.025.026.027.053.026.026.026.026v.027l.027.026v.053h.026v.052c.132.237.184.527.184.842v11.58a2.117 2.117 0 0 1-2.105 2.13c-1.184 0-2.105-.946-2.105-2.13v-6.5l-24.448 24.447h6.5c1.185 0 2.132.92 2.132 2.105a2.117 2.117 0 0 1-2.132 2.105H82.197c-.315 0-.605-.052-.842-.184h-.052v-.026h-.053l-.026-.027h-.027l-.026-.026-.026-.026-.053-.027-.026-.026h-.027c-.026-.026-.078-.053-.105-.079h-.026l-.026-.026-.027-.026v-.027l-.052-.026-.027-.026-.052-.027-.027-.052-.026-.027h-.026l-.027-.026v-.026l-.026-.027-.026-.026-.027-.026v-.027h-.026v-.026h-.026c-.026-.053-.053-.079-.08-.131l-.025-.053-.027-.026v-.027l-.026-.026v-.026l-.026-.027v-.026l-.027-.026v-.027l-.026-.026a2.304 2.304 0 0 1-.184-.842v-11.605z" fill="#FFF"/>
+    </g>
+</svg>

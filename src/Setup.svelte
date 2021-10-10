@@ -56,61 +56,86 @@
 
 <div class="screen" transition:fade={{ duration: 1000 }}>
 	{#if !hasGeoPermission}
-		{#if verifyingGeoPermission}
-			<div class="test">
-				<span>⏳</span>
+		<div class="step">
+			<div class="header">
+				<img src="/assets/icons/setup/setup.svg" alt="GPS" />
 			</div>
-		{:else}
-			<div class="test">
-				<span class="highlight" />
+			<div class="description">
+				<h1>GPS</h1>
+
+				<p>
+					Um dir das größtmögliche Erlebnis zu bieten, welchseln wir in den Fullscreen Modus, in dem dir die ganze Bildschirmfläche zur Verfügung steht.
+				</p>
 			</div>
-			<div class="test">
-				<span class="trigger" on:click={checkGeoPermission}>🛰️</span>
+			<div class="nav">
+				<button on:click="{checkGeoPermission}">GPS aktivieren</button>
 			</div>
-			<div class="test help">
-				<span on:click={checkGeoPermission}>👆</span>
-			</div>
-		{/if}
+		</div>
 	{:else if !hasOrientationPermission}
-		{#if verifyingOrientationPermission}
-			<div class="test">
-				<span>⏳</span>
+		<div class="step">
+			<div class="header">
+				<img src="/assets/icons/setup/setup.svg" alt="Kompass" />
 			</div>
-		{:else}
-			<div class="test">
-				<span class="highlight" />
+			<div class="description">
+				<h1>Kompass</h1>
+
+				<p>
+					Um dir das größtmögliche Erlebnis zu bieten, welchseln wir in den Fullscreen Modus, in dem dir die ganze Bildschirmfläche zur Verfügung steht.
+				</p>
 			</div>
-			<div class="test">
-				<span class="trigger" on:click={checkOrientationPermission}>🧭</span>
+			<div class="nav">
+				<button on:click="{checkOrientationPermission}">Kompass aktivieren</button>
 			</div>
-			<div class="test help">
-				<span on:click={checkOrientationPermission}>👆</span>
-			</div>
-		{/if}
+		</div>
 	{:else}
-		{#if preparingUI}
-			<div class="test">
-				<span>⏳</span>
+		<div class="step">
+			<div class="header fullscreen">
+				<img src="/assets/icons/setup/fullscreen.svg" alt="Fullscreen" />
 			</div>
-		{:else}
-			<div class="test">
-				<span class="highlight" />
+			<div class="description">
+				<h1>Wechsel in den Fullscreen Modus</h1>
+
+				<p>
+					Um dir das größtmögliche Erlebnis zu bieten, welchseln wir in den Fullscreen Modus, in dem dir die ganze Bildschirmfläche zur Verfügung steht.
+				</p>
 			</div>
-			<div class="test">
-				<span class="trigger" on:click={prepareUI}>🚀</span>
+			<div class="nav">
+				<button on:click="{prepareUI}">Fullscreen starten</button>
 			</div>
-			<div class="test help">
-				<span on:click={prepareUI}>👆</span>
-			</div>
-		{/if}
+		</div>
 	{/if}
 </div>
 
 <style>
-	.test {
+	.step {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
+		grid-template-rows: 3fr 4fr 1fr;
+
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 1;
+		grid-row-end: -1;
+
+		background-image: url("/assets/images/background-texture-map.png");
+		background-size: cover;
+		background-position: center;
+	}
+
+	.description {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 2;
+		grid-row-end: 3;
+
+		padding: 2em;
+
+		max-height: 40vh;
+		overflow: scroll;
+	}
+
+	.header {
+		display: flex;
 
 		grid-column-start: 1;
 		grid-column-end: -1;
@@ -118,70 +143,24 @@
 		grid-row-end: 2;
 	}
 
-	.test span {
-		font-size: 30vh;
+	.header img {
 		margin: auto;
 	}
 
-	.help {
+	.nav {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 3;
+		grid-row-end: -1;
+		
 		margin: auto;
 	}
 
-	.help span {
-		font-size: 10vh;
-		z-index: 1;
-		animation-name: show-help;
-		animation-delay: 3s;
-		animation-duration: 12s;
-		animation-iteration-count: infinite;
-
-		transform: translate(200%, 0%);
-		opacity: 0;
-	}
-
-	@keyframes show-help {
-		0% {
-			transform: translate(200%, 0%);
-			opacity: 1;
-		}
-		10% {
-			transform: translate(50%, 0%);
-			opacity: 1;
-		}
-		11% {
-			opacity: 0;
-		}
-		12% {
-			transform: translate(200%, 0%);
-			opacity: 0;
-		}
-		100% {
-			transform: translate(200%, 0%);
-			opacity: 0;
-		}
-	}
-
-	.highlight {
-		border-radius: 50%;
-		border: 0.8em solid white;
-
-		box-sizing: border-box;
-		animation: pulsing 2s infinite;
-		z-index: -1;
-	}
-
-	@keyframes pulsing {
-		0% {
-			transform: scale(0);
-			opacity: 1;
-		}
-		70% {
-			transform: scale(1);
-			opacity: 0;
-		}
-		100% {
-			transform: scale(0);
-			opacity: 0;
-		}
+	.nav button {
+		border-radius: 1.5em;
+		color: var(--font-color-button);
+		background-color: var(--background-color-button);
+		padding: 1em;
+		font-size: large;
 	}
 </style>

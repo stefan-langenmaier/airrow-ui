@@ -24,7 +24,7 @@
 		</span>
 		<span class="menu__text">Karte</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('map')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('list')} class="menu__link">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/art.svg#art"></use>
@@ -32,7 +32,7 @@
 		</span>
 		<span class="menu__text">Kunstwerk</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('map')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('donumenta')} class="menu__link">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/donumenta.svg#donumenta"></use>
@@ -40,7 +40,7 @@
 		</span>
 		<span class="menu__text">donumenta</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('map')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('news')} class="menu__link">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/news.svg#news"></use>
@@ -77,25 +77,25 @@
 		</div>
 		<hr />
 		<div class="subpages">
-			<a href="/#">
+			<a href="/#" on:click={() => switchScreen('sponsors')}>
 				<span class="subpage__icon"><img src="/assets/icons/subpage/sponsors.svg" alt="Sponsoren"/></span>
 				<span class="subpage__text">Sponsoren</span>
 			</a>
-			<a href="/#">
+			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
 				<span class="subpage__icon"><img src="/assets/icons/subpage/imprint.svg" alt="Impressum"/></span>
 				<span class="subpage__text">Impressum</span>
 			</a>
-			<a href="/#">
+			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
 				<span class="subpage__icon"><img src="/assets/icons/subpage/legal.svg" alt="Datenschutz &amp; AGB"/></span>
 				<span class="subpage__text">Datenschutz &amp; AGB</span>
 			</a>
 		</div>
 		<hr />
 		<div class="social">
-			<a href="/#">
+			<a href="https://instagram.com" target="_blank">
 				<span class="social__icon"><img src="/assets/icons/social/instagram.svg" alt="Instagram"/></span>
 			</a>
-			<a href="/#">
+			<a href="https://facebook.com" target="_blank">
 				<span class="social__icon"><img src="/assets/icons/social/facebook.svg" alt="Instagram"/></span>
 			</a>
 		</div>

@@ -28,6 +28,8 @@ class Airrow {
         this.orientationPermissionUpdateHandler = null;
 
         this.hasOrientationEventHandler = false;
+
+        this.positionUpdateHandler = null;
     }
 
     registerGeoPermissionUpdate(fun) {
@@ -128,6 +130,9 @@ class Airrow {
         if (this.geoPermissionUpdateHandler !== null) {
             this.geoPermissionUpdateHandler(true);
             this.geoPermissionUpdateHandler = null;
+        }
+        if (this.positionUpdateHandler !== null) {
+            this.positionUpdateHandler(position);
         }
         this.latestPosition = position;
 
@@ -490,6 +495,10 @@ class Airrow {
         } else {
             throw new Error(res);
         }
+    }
+
+    registerPositionUpdate(fun) {
+        this.positionUpdateHandler = fun;
     }
     
 }

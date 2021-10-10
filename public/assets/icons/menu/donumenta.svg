@@ -1,5 +1,5 @@
 <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd">
+    <g id="donumenta" fill="none" fill-rule="evenodd">
         <path fill="#AAB1B6" d="M5.729 4.25h5.735v23.439H5.729z"/>
         <path d="M11.463 27.69V4.25h-4.61c-.129.881-.274 1.601-.435 2.16-.161.559-.381.994-.66 1.305-.28.312-.64.527-1.08.645-.441.118-.994.177-1.66.177H.857v3.9h4.835V27.69h5.77z" fill="#AAB1B6" fill-rule="nonzero"/>
         <path d="M9.167 12.298v-7.92L6.853 4.25c-.129.881-.274 1.601-.435 2.16-.161.559-.381.994-.66 1.305-.187.208-.208 1.782-.065 4.723h.064l3.41-.14z" fill="#80898F" fill-rule="nonzero"/>

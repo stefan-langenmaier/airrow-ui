@@ -1,5 +1,5 @@
 <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(1.541 4.85)" stroke="#8D969C" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round">
+    <g id="art" transform="translate(1.541 4.85)" stroke="#8D969C" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round">
         <path d="M15.632 21.86s11.198-3.705 6.57-13.766c0 0-2.717-6.484-10.927-7.508C3.065-.438 1.05 4.812 1.05 4.812s-3.672 7.288 2.716 8.035c.917.108 2.83-.317 3.622.753.792 1.07.164 2.376 0 4.98-.09 1.448 1.001 4.944 8.244 3.28z"/>
         <circle cx="6.086" cy="6.629" r="2.031"/>
         <circle cx="17.867" cy="8.898" r="1.375"/>

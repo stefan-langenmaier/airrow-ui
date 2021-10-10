@@ -6,9 +6,20 @@ html, body {
 	height: -webkit-fill-available;
 }
 
+@font-face {
+	font-family: "GoodPro-Book";
+	src: url("/assets/fonts/GoodWebPro-Book.woff") format("woff");
+}
+
+@font-face {
+	font-family: "GoodPro-BookItalic";
+	src: url("/assets/fonts/GoodWebPro-BookItalic.woff") format("woff");
+}
+  
+
 body {
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: "GoodPro-Book", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 	min-height: 100vh;
 	/* mobile viewport bug fix */

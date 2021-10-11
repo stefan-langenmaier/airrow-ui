@@ -1,5 +1,30 @@
 {
     "app": {
         "title": "Ärro"
+    },
+    "menu": {
+        "main": {
+            "map": "Karte",
+            "objects": "Kunstwerke",
+            "donumenta": "donumenta",
+            "news": "News",
+            "more": "Weitere Infos"
+        },
+        "submenu": {
+            "sponsors": "Sponsoren",
+            "imprint": "Impressum",
+            "legal": "Datenschutz & AGB"
+        }
+    },
+    "map": {
+        "popup": {
+            "close": "Schliessen",
+            "info": "Info",
+            "more-about-the-object": "Mehr zum Kunstwerk",
+            "share": "Teilen",
+            "favorite": "Markieren",
+            "start-routing": "Route starten",
+            "distance-estimation": "{minutes} Minuten zu Fuss"
+        }
     }
 }

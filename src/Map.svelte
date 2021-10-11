@@ -1,5 +1,6 @@
 <script>
 	import {onMount, onDestroy} from "svelte";
+	import { _ } from 'svelte-i18n'
 	import {LeafletMap, TileLayer, Marker, Popup} from 'svelte-leafletjs';
 	import L from 'leaflet';
 	import { screen } from './state.js';
@@ -109,7 +110,7 @@
 		<div class="popup">
 			<div class="action">
 				<div class="close" on:click="{() => { selection = null }}">
-					<img src="/assets/icons/map/close.svg" alt="Schliessen" />
+					<img src="/assets/icons/map/close.svg" alt="{$_('map.popup.close')}" />
 				</div>
 			</div>
 			<div class="description">
@@ -123,26 +124,26 @@
 				</div>
 			</div>
 			<div class="routing">
-				<button on:click={() => startNav(selection.status)}>Route starten</button>
+				<button on:click={() => startNav(selection.status)}>{$_('map.popup.start-routing')}</button>
 				<div class="estimation">
 					<p>
-						15 Minuten zu Fuß
+						{$_('map.popup.distance-estimation', { values: { minutes: "15" } })}
 					</p>
 				</div>
 			</div>
 			<hr />
 			<div class="action">
 				<div class="share">
-					<img src="/assets/icons/map/share.svg" alt="Teilen" />
+					<img src="/assets/icons/map/share.svg" alt="{$_('map.popup.share')}" />
 				</div>
 				<div class="like">
-					<img src="/assets/icons/map/like.svg" alt="Markieren" />
+					<img src="/assets/icons/map/like.svg" alt="{$_('map.popup.favorite')}" />
 				</div>
 			</div>
 			<div class="details">
 				<a href="/#" on:click={() => viewPoint(selection.refCode)}>
-					<img src="/assets/icons/map/info.svg" alt="Info" />
-					Mehr zum Kunstwerk
+					<img src="/assets/icons/map/info.svg" alt="{$_('map.popup.info')}" />
+					{$_('map.popup.more-about-the-object')}
 				</a>
 			</div>
 		</div>

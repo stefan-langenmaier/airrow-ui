@@ -1,5 +1,30 @@
 {
     "app": {
         "title": "Ärro"
+    },
+    "menu": {
+        "main": {
+            "map": "Map",
+            "objects": "Objects",
+            "donumenta": "donumenta",
+            "news": "News",
+            "more": "More"
+        },
+        "submenu": {
+            "sponsors": "Sponsors",
+            "imprint": "Imprint",
+            "legal": "Legal"
+        }
+    },
+    "map": {
+        "popup": {
+            "close": "Close",
+            "info": "Info",
+            "more-about-the-object": "More about the object",
+            "share": "Share",
+            "favorite": "Favorite",
+            "start-routing": "Start routing",
+            "distance-estimation": "{minutes} minutes by foot"
+        }
     }
 }

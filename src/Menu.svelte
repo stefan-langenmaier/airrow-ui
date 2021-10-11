@@ -1,5 +1,6 @@
 <script>
-	import { fade } from "svelte/transition";
+	import { _, locale } from 'svelte-i18n'
+
 	import { screen } from './state.js';
 
 	let isOpen = false;
@@ -16,37 +17,37 @@
 </script>
 
 <nav class="menu">
-	<a href="/#" on:click|preventDefault={() => switchScreen('map')} class="menu__link menu__link--active">
+	<a href="/#" on:click|preventDefault={() => switchScreen('map')} class="menu__link" class:menu__link--active="{$screen === 'map'}">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/pin.svg#pin"></use>
 			</svg>
 		</span>
-		<span class="menu__text">Karte</span>
+		<span class="menu__text">{$_('menu.main.map')}</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('list')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('list')} class="menu__link" class:menu__link--active="{$screen === 'list'}">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/art.svg#art"></use>
 			</svg>
 		</span>
-		<span class="menu__text">Kunstwerk</span>
+		<span class="menu__text">{$_('menu.main.objects')}</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('donumenta')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('donumenta')} class="menu__link" class:menu__link--active="{$screen === 'donumenta'}">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/donumenta.svg#donumenta"></use>
 			</svg>
 		</span>
-		<span class="menu__text">donumenta</span>
+		<span class="menu__text">{$_('menu.main.donumenta')}</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('news')} class="menu__link">
+	<a href="/#" on:click={() => switchScreen('news')} class="menu__link" class:menu__link--active="{$screen === 'news'}">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/news.svg#news"></use>
 			</svg>
 		</span>
-		<span class="menu__text">News</span>
+		<span class="menu__text">{$_('menu.main.news')}</span>
 	</a>
 	<a href="/#" on:click|preventDefault={() => toggleSubMenu()} class="menu__link" class:menu__link--active="{isOpen}">
 		<span class="menu__icon">
@@ -60,7 +61,7 @@
 			</svg>
 		{/if}
 		</span>
-		<span class="menu__text">Weitere Infos</span>
+		<span class="menu__text">{$_('menu.main.more')}</span>
 	</a>
 </nav>
 {#if isOpen}
@@ -68,26 +69,26 @@
 <nav class="submenu">
 	<div class="submenu__links">
 		<div class="languages">
-			<a href="/#">
+			<a href="/#" on:click="{() => locale.set('de')}">
 				<span class="language__icon">🇩🇪</span>
 			</a>
-			<a href="/#">
+			<a href="/#" on:click="{() => locale.set('en')}">
 				<span class="language__icon">🇬🇧</span>
 			</a>
 		</div>
 		<hr />
 		<div class="subpages">
 			<a href="/#" on:click={() => switchScreen('sponsors')}>
-				<span class="subpage__icon"><img src="/assets/icons/subpage/sponsors.svg" alt="Sponsoren"/></span>
-				<span class="subpage__text">Sponsoren</span>
+				<span class="subpage__icon"><img src="/assets/icons/subpage/sponsors.svg" alt="{$_('menu.submenu.sponsors')}"/></span>
+				<span class="subpage__text">{$_('menu.submenu.sponsors')}</span>
 			</a>
 			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
-				<span class="subpage__icon"><img src="/assets/icons/subpage/imprint.svg" alt="Impressum"/></span>
-				<span class="subpage__text">Impressum</span>
+				<span class="subpage__icon"><img src="/assets/icons/subpage/imprint.svg" alt="{$_('menu.submenu.imprint')}"/></span>
+				<span class="subpage__text">{$_('menu.submenu.imprint')}</span>
 			</a>
 			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
-				<span class="subpage__icon"><img src="/assets/icons/subpage/legal.svg" alt="Datenschutz &amp; AGB"/></span>
-				<span class="subpage__text">Datenschutz &amp; AGB</span>
+				<span class="subpage__icon"><img src="/assets/icons/subpage/legal.svg" alt="{$_('menu.submenu.legal')}"/></span>
+				<span class="subpage__text">{$_('menu.submenu.legal')}</span>
 			</a>
 		</div>
 		<hr />

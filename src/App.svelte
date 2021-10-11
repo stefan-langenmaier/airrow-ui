@@ -71,4 +71,13 @@
 	:global(a) {
 		color: var(--font-color-active);
 	}
+
+	:global(.menu) {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 2;
+		grid-row-end: -1;
+
+		display: flex;
+	}
 </style>

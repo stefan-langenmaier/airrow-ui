@@ -128,10 +128,16 @@
 		grid-row-start: 2;
 		grid-row-end: 3;
 
-		padding: 2em;
-
-		max-height: 40vh;
+		max-height: calc(var(--vh, 1vh) * 40);
 		overflow: scroll;
+	}
+
+	.description p {
+		margin: 1em;
+	}
+
+	.description h1 {
+		margin: 1em;
 	}
 
 	.header {

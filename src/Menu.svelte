@@ -144,7 +144,7 @@
 		position: absolute;
 		z-index: 1001;
 		top: 0px;
-		height: 100vh;
+		height: calc(var(--vh, 1vh) * 100);
 		width: 100vw;
 		background-color: rgba(0, 0, 0, 0.5);
 	}

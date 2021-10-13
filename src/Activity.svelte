@@ -28,7 +28,7 @@
 {:else if $screen == 'news'}
 <News airrow={airrow} />
 {:else if $screen == 'sponsors'}
-<Sponsors airrow={airrow} />
+<Sponsors/>
 {/if}
 
 

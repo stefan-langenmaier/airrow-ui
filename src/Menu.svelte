@@ -35,9 +35,15 @@
 	</a>
 	<a href="/#" on:click={() => switchScreen('donumenta')} class="menu__link" class:menu__link--active="{$screen === 'donumenta'}">
 		<span class="menu__icon">
+			{#if $screen === 'donumenta'}
+			<svg viewBox="0 0 32 32">
+				<use xlink:href="/assets/icons/menu/donumenta.svg#active"></use>
+			</svg>
+			{:else}
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/donumenta.svg#donumenta"></use>
 			</svg>
+			{/if}
 		</span>
 		<span class="menu__text">{$_('menu.main.donumenta')}</span>
 	</a>

@@ -67,6 +67,13 @@
 		};
 	}
 
+	function centerPosition() {
+		const map = leafletMap.getMap();
+		if (self) {
+			map.setView([self.location.lat, self.location.lon], 16);
+		}
+	}
+
 	let selection = null;
 
 	function select(marker) {
@@ -90,6 +97,13 @@
 <div class="screen">
 	<div class="map">
 		<LeafletMap bind:this={leafletMap} options={mapOptions}>
+			<div class="center" on:click={centerPosition}>
+				{#if self}
+				<img src="/assets/icons/map/position-center.svg" alt="{$_('map.overlay.center')}" />
+				{:else}
+				<img src="/assets/icons/map/position-center-empty.svg" alt="{$_('map.overlay.center')}" />
+				{/if}
+			</div>
 			<TileLayer url={tileUrl} options={tileLayerOptions}/>
 			{#if markers}
 			{#await markers then data}
@@ -222,6 +236,22 @@
 
 	.estimation p {
 		margin-top: 0px;
+	}
+
+	.map div.center {
+		position: absolute;
+		z-index: 1000;
+		right: 2em;
+		top: 2em;
+
+		background: white;
+		border-radius: 100%;
+		width: 3em;
+		height: 3em;
+		box-shadow: 0 0 3px rgb(0, 0, 0);
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	:global(.leaflet-popup-content .overview h2) {

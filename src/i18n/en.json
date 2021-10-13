@@ -17,6 +17,9 @@
         }
     },
     "map": {
+        "overlay": {
+            "center": "Center"
+        },
         "popup": {
             "close": "Close",
             "info": "Info",

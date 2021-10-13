@@ -54,11 +54,11 @@
 
 </script>
 
-<div class="screen" transition:fade={{ duration: 1000 }}>
+<div class="screen">
 	{#if !hasGeoPermission}
 		<div class="step">
 			<div class="header">
-				<img src="/assets/icons/setup/setup.svg" alt="GPS" />
+				<img src="/assets/icons/setup/gps.svg" alt="GPS" />
 			</div>
 			<div class="description">
 				<h1>GPS</h1>
@@ -74,7 +74,7 @@
 	{:else if !hasOrientationPermission}
 		<div class="step">
 			<div class="header">
-				<img src="/assets/icons/setup/setup.svg" alt="Kompass" />
+				<img src="/assets/icons/setup/compass.svg" alt="Kompass" />
 			</div>
 			<div class="description">
 				<h1>Kompass</h1>

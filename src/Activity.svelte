@@ -7,7 +7,6 @@
 	import List from './List.svelte';
 	import Details from './Details.svelte';
 	import Donumenta from './Donumenta.svelte';
-	import News from './News.svelte';
 	import Sponsors from './Sponsors.svelte';
 
 	export let airrow; 
@@ -25,8 +24,6 @@
 <Details airrow={airrow} />
 {:else if $screen == 'donumenta'}
 <Donumenta airrow={airrow} />
-{:else if $screen == 'news'}
-<News airrow={airrow} />
 {:else if $screen == 'sponsors'}
 <Sponsors/>
 {/if}

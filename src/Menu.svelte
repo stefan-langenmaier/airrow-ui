@@ -47,7 +47,7 @@
 		</span>
 		<span class="menu__text">{$_('menu.main.donumenta')}</span>
 	</a>
-	<a href="/#" on:click={() => switchScreen('news')} class="menu__link" class:menu__link--active="{$screen === 'news'}">
+	<a href="https://www.donumenta.de/" target="_blank" class="menu__link">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/news.svg#news"></use>

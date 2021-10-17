@@ -1,4 +1,6 @@
 <script>
+	import { _ } from 'svelte-i18n';
+
 	import Menu from './Menu.svelte';
 </script>
 
@@ -6,19 +8,19 @@
 	<div class="step">
 		<div class="header"></div>
 		<div class="description">
-			<h1 class="description_heading">Über Donumenta</h1>
+			<h1 class="description_heading">{$_('donumenta.title')}</h1>
 
 			<div class="description__list">
 				<div class="description__innerlist">
 					<div class="description__element">
-						<p>Die donumenta steht für aktuelle Kunst aus 14 Ländern an der Donau: Multimedia, Performance, Installation, Fotografie, Malerei, Crossover – grenzenlos. Sie ist die Initiative ihrer künstlerischen Leiterin Regina-Hellwig-Schmid und wurde als Verein 2002 in Regensburg gegründet.
-							Der donumenta e.V. macht Regensburg zur Drehscheibe des internationalen Kulturaustauschs entlang der Donau und trägt zum Profil der Welterbe-Stadt als Ort zeitgenössischer Kunst bei.	
-						</p>
+						<p>{$_('donumenta.description')}</p>
 					</div>
 					<div class="description__element">
-						<p>Die donumenta steht für aktuelle Kunst aus 14 Ländern an der Donau: Multimedia, Performance, Installation, Fotografie, Malerei, Crossover – grenzenlos. Sie ist die Initiative ihrer künstlerischen Leiterin Regina-Hellwig-Schmid und wurde als Verein 2002 in Regensburg gegründet.
-							Der donumenta e.V. macht Regensburg zur Drehscheibe des internationalen Kulturaustauschs entlang der Donau und trägt zum Profil der Welterbe-Stadt als Ort zeitgenössischer Kunst bei.	
-						</p>
+						<a href="https://www.instagram.com/donumenta/"><img src="/assets/icons/social/instagram.svg" alt="Instagram"/></a>
+						<a href="https://www.facebook.com/donumenta/"><img src="/assets/icons/social/facebook.svg" alt="Facebook"/></a>
+					</div>
+					<div class="description__element newsletter">
+						<a href="https://www.donumenta.de/info/newsletter-anmeldung/" target="_blank">{$_('donumenta.newsletter_subscribe')}</a>
 					</div>
 				</div>
 			</div>
@@ -88,5 +90,9 @@
 		max-width: 80vw;
 		color: var(--font-color);
 		margin-bottom: 2em;
+	}
+
+	.newsletter {
+		text-align: center;
 	}
 </style>

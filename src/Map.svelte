@@ -196,16 +196,6 @@
 		margin-top: 0.5em;
 	}
 
-	hr {
-		color: var(--background-color);
-	}
-
-	.description {
-		padding-top: 1em;
-		padding-left: 1em;
-		padding-right: 1em;
-	}
-
 	.details {
 		padding-bottom: 1em;
 		padding-left: 1em;

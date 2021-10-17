@@ -29,8 +29,12 @@
 </div>
 
 <style>
-
 	.sponsors {
+		grid-column-start: 1;
+		grid-column-end: -1;
+		grid-row-start: 1;
+		grid-row-end: -1;
+
 		display: flex;
 		flex-direction: column;
 	}

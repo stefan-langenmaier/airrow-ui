@@ -162,14 +162,6 @@
 		overflow: scroll;
 	}
 
-	.description p {
-		margin: 1em;
-	}
-
-	.description h1 {
-		margin: 1em;
-	}
-
 	.header {
 		display: flex;
 

@@ -200,9 +200,4 @@
 	.subpage__text {
 		color: var(--font-color);
 	}
-
-	hr {
-		color: var(--background-color);
-	}
-
 </style>

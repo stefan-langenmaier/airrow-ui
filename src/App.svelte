@@ -62,10 +62,20 @@
 
 	:global(h1){
 		color: var(--font-color-bold);
+		margin-left: 4vw;
+		margin-right: 4vw;
+	}
+
+	:global(h2){
+		color: var(--font-color-bold);
+		margin-left: 4vw;
+		margin-right: 4vw;
 	}
 
 	:global(p) {
 		color: var(--font-color-normal);
+		margin-left: 4vw;
+		margin-right: 4vw;
 	}
 
 	:global(a) {
@@ -79,5 +89,13 @@
 		grid-row-end: -1;
 
 		display: flex;
+	}
+
+	:global(ul) {
+		color: var(--font-color-normal);
+	}
+
+	:global(hr) {
+		color: var(--background-color);
 	}
 </style>

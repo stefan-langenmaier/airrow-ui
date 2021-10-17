@@ -8,6 +8,8 @@
 	import Details from './Details.svelte';
 	import Donumenta from './Donumenta.svelte';
 	import Sponsors from './Sponsors.svelte';
+	import Corona from './Corona.svelte';
+	import Imprint from './Imprint.svelte';
 
 	export let airrow; 
 </script>
@@ -23,9 +25,13 @@
 {:else if $screen == 'details'}
 <Details airrow={airrow} />
 {:else if $screen == 'donumenta'}
-<Donumenta airrow={airrow} />
+<Donumenta />
 {:else if $screen == 'sponsors'}
-<Sponsors/>
+<Sponsors />
+{:else if $screen == 'corona'}
+<Corona />
+{:else if $screen == 'imprint'}
+<Imprint />
 {/if}
 
 

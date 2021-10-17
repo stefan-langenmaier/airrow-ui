@@ -1,5 +1,5 @@
 <script>
-	import { _, locale } from 'svelte-i18n'
+	import { _, locale } from 'svelte-i18n';
 
 	import { screen } from './state.js';
 
@@ -88,11 +88,15 @@
 				<span class="subpage__icon"><img src="/assets/icons/subpage/sponsors.svg" alt="{$_('menu.submenu.sponsors')}"/></span>
 				<span class="subpage__text">{$_('menu.submenu.sponsors')}</span>
 			</a>
-			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
+			<a href="/#" on:click={() => switchScreen('corona')}>
+				<span class="subpage__icon"><img src="/assets/icons/subpage/corona.svg" alt="{$_('menu.submenu.corona')}"/></span>
+				<span class="subpage__text">{$_('menu.submenu.corona')}</span>
+			</a>
+			<a href="/#" on:click={() => switchScreen('imprint')}>
 				<span class="subpage__icon"><img src="/assets/icons/subpage/imprint.svg" alt="{$_('menu.submenu.imprint')}"/></span>
 				<span class="subpage__text">{$_('menu.submenu.imprint')}</span>
 			</a>
-			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">
+			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/#c565" target="_blank">
 				<span class="subpage__icon"><img src="/assets/icons/subpage/legal.svg" alt="{$_('menu.submenu.legal')}"/></span>
 				<span class="subpage__text">{$_('menu.submenu.legal')}</span>
 			</a>

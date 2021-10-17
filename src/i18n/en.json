@@ -12,6 +12,7 @@
         },
         "submenu": {
             "sponsors": "Sponsors",
+            "corona": "Corona",
             "imprint": "Imprint",
             "legal": "Legal"
         }
@@ -29,5 +30,22 @@
             "start-routing": "Start routing",
             "distance-estimation": "{minutes} minutes by foot"
         }
+    },
+    "corona": {
+        "title": "Corona",
+        "description": {
+            "warning": "The Corona pandemic is not over yet - currently the number of new infections is rising again. Almost all infections are caused by the delta variant of the virus.",
+            "vaccination": "The best protection against the SARS-CoV-2 coronavirus is vaccination! Vaccination against COVID-19 is free of charge and available in many places. ",
+			"protection": "In addition, to prevent the further spread of the coronavirus, it is important,",
+			"p1": "to follow the AHA formula: Keep your distance, observe hygiene, wear a mask - even on vacation,",
+			"p2": "to meet with others preferably outdoors,",
+			"p3": "take advantage of testing offers,",
+			"p4": "avoid traveling to areas where the virus is present or where there is a high incidence of the virus, and",
+			"p5": "comply with entry regulations after traveling abroad.",
+			"join": "Join us - this is how you protect yourself and those around you!"
+        }
+    },
+    "imprint": {
+        "title": "Imprint"
     }
 }

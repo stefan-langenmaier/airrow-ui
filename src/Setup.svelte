@@ -1,17 +1,23 @@
 <script>
-	import { fade } from "svelte/transition";
+	import { _ } from 'svelte-i18n';
+
 	import { configured } from './state.js';
 	
 	export let airrow; 
 
 	let hasGeoPermission = false;
-	let hasOrientationPermission = false
+	let hasOrientationPermission = false;
+	let hasSeenCoronaWarning = false
 	let verifyingGeoPermission = false;
 	let verifyingOrientationPermission = false;
 	let preparingUI = false;
 
 	airrow.checkGeoPermission(updateGeoPermission);
 	airrow.checkOrientationPermission(updateOrientationPermission);
+
+	function checkCoronaWarning() {
+		hasSeenCoronaWarning = true;
+	}
 
 	function updateGeoPermission(hasPermission) {
 		verifyingGeoPermission = false;
@@ -55,7 +61,31 @@
 </script>
 
 <div class="screen">
-	{#if !hasGeoPermission}
+	{#if !hasSeenCoronaWarning}
+		<div class="step">
+			<div class="header">
+				<img src="/assets/icons/setup/corona.svg" alt="GPS" />
+			</div>
+			<div class="description">
+				<h1>{$_('corona.title')}</h1>
+
+				<p>{$_('corona.description.warning')}</p>
+				<p>{$_('corona.description.vaccination')}</p>
+				<p>{$_('corona.description.protection')}</p>
+				<ul>
+					<li>{$_('corona.description.p1')}</li>
+					<li>{$_('corona.description.p2')}</li>
+					<li>{$_('corona.description.p3')}</li>
+					<li>{$_('corona.description.p4')}</li>
+					<li>{$_('corona.description.p5')}</li>
+				</ul>
+				<p>{$_('corona.description.join')}</p>
+			</div>
+			<div class="nav">
+				<button on:click="{checkCoronaWarning}">Okay</button>
+			</div>
+		</div>
+	{:else if !hasGeoPermission}
 		<div class="step">
 			<div class="header">
 				<img src="/assets/icons/setup/gps.svg" alt="GPS" />

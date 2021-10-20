@@ -9,16 +9,44 @@
 		<div class="sponsors__list">
 			<div class="sponsors__innerlist">
 				<div class="sponsors__element">
-					<span class="sponsors__image">
-						<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="">
-					</span>
-					<span class="sponsors__name">Stadt Regensburg</span>
+					<a href="https://www.regensburg.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
+						</span>
+						<span class="sponsors__name">Stadt Regensburg</span>
+					</a>
 				</div>
 				<div class="sponsors__element">
-					<span class="sponsors__image">
-						<img src="/assets/images/sponsors/bvs.png" alt="">
-					</span>
-					<span class="sponsors__name">BVS</span>
+					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/bundesregierung-kultur-und-medien.svg" alt="Logo für Bundesregierung-Kultur und Medien">
+						</span>
+						<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.soziokultur.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/bundesverband-soziokultur.svg" alt="Logo des Bundesverband Soziokultur">
+						</span>
+						<span class="sponsors__name">Bundesverband Soziokultur</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.soziokultur.neustartkultur.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/neustart-kultur.svg" alt="Logo Soziokultur Neustart">
+						</span>
+						<span class="sponsors__name">Bundesverband Soziokultur</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
+						</span>
+						<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -61,6 +89,7 @@
 
 	.sponsors__image img {
 		max-width: 80%;
+		height: 30vh;
 
 		border-style: solid;
 		border-radius: 1em;
@@ -69,15 +98,15 @@
 		display: block;
 	}
 
-	.sponsors__element {
+	.sponsors__element a {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		flex-grow: 1;
 		overflow: hidden;
-		white-space: nowrap;
 		color: var(--font-color);
 		margin-bottom: 2em;
+		text-align: center;
 	}
 </style>

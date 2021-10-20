@@ -4,14 +4,16 @@
 
 	import * as Util from './util.js';
 
-	function switchScreen(s) {
-		$screen = s;
+	function showDetails(refCode) {
+		airrow.targetRefCode = refCode;
+		$screen = "details";
 	}
 
 	export let marker;
+	export let airrow;
 </script>
 
-<div class="details__element" on:click={() => switchScreen('details')}>
+<div class="details__element" on:click={() => showDetails(marker.refCode)}>
 	<div class="details__action">
 		<div class="details__favorite">
 			<img src="/assets/icons/preview/like.svg" alt="Markieren" />

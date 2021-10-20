@@ -24,7 +24,7 @@
 		<div class="details__list">
 			{#await markers then data}
 				{#each data.points as m}
-				<Preview marker={m} />
+				<Preview marker={m} airrow={airrow} />
 				{/each}
 			{/await}
 		</div>

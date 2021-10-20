@@ -52,5 +52,19 @@
         "title": "Über Donumenta",
         "description": "Die donumenta steht für aktuelle Kunst aus 14 Ländern an der Donau: Multimedia, Performance, Installation, Fotografie, Malerei, Crossover – grenzenlos. Sie ist die Initiative ihrer künstlerischen Leiterin Regina-Hellwig-Schmid und wurde als Verein 2002 in Regensburg gegründet. Der donumenta e.V. macht Regensburg zur Drehscheibe des internationalen Kulturaustauschs entlang der Donau und trägt zum Profil der Welterbe-Stadt als Ort zeitgenössischer Kunst bei.",
         "newsletter_subscribe": "Zum Newsletter anmelden"
+    },
+    "details": {
+        "action": {
+            "share": "Teilen",
+            "favorite": "Markieren",
+            "route": "Route starten",
+            "view": "Object betrachten"
+        },
+        "description": {
+            "close": "Schliessen",
+            "open": "Öffnen",
+            "idea": "Idee/Motivation",
+            "location": "Ort"
+        }
     }
 }

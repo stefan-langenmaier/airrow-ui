@@ -183,12 +183,4 @@
 		
 		margin: auto;
 	}
-
-	.nav button {
-		border-radius: 1.5em;
-		color: var(--font-color-button);
-		background-color: var(--background-color-button);
-		padding: 1em;
-		font-size: large;
-	}
 </style>

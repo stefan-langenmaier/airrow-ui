@@ -66,9 +66,8 @@
 				</div>
 			</div>
 			<div class="description__more">
-				<a href="/#" >
-					<img src="/assets/icons/map/info.svg" alt="Mehr" />
-					Mehr zum Kunstwerk
+				<a href="/#" on:click="{() => switchScreen('details')}">
+					<img src="/assets/icons/map/info.svg" alt="Mehr" />Mehr zum Kunstwerk
 				</a>
 			</div>
 		</div>

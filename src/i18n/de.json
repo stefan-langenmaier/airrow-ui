@@ -66,5 +66,15 @@
             "idea": "Idee/Motivation",
             "location": "Ort"
         }
+    },
+    "nav": {
+        "map": {},
+        "info": {
+            "object-distance": "Ziel ungefähr {distance} entfernt",
+            "eta": "Ankunft in {time}min",
+            "eta-lt-2min": "Ankunft in weniger als zwei Minuten",
+            "wait-for-location": "Warte auf Standortdaten",
+            "stop-navigation": "Navigation beenden"
+        }
     }
 }

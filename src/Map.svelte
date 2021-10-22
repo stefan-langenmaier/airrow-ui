@@ -37,8 +37,8 @@
 		shadowAnchor: [20, 20]
 	});
 
-	function startNav(status) {
-		airrow.status = status;
+	function startNav(refCode) {
+		airrow.targetRefCode = refCode;
 		$screen = 'nav';
 	}
 
@@ -138,7 +138,7 @@
 				</div>
 			</div>
 			<div class="routing">
-				<button on:click={() => startNav(selection.status)}>{$_('map.popup.start-routing')}</button>
+				<button on:click={() => startNav(selection.refCode)}>{$_('map.popup.start-routing')}</button>
 				<div class="estimation">
 					<p>
 						{$_('map.popup.distance-estimation', { values: { minutes: "15" } })}

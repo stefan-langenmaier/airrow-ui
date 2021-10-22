@@ -11,6 +11,7 @@ export {
     isLink,
     isYoutubeLink,
     humanDistance,
+    humanDistanceTime,
     getApiServer,
     filterEmojiInput,
     reload,
@@ -126,6 +127,11 @@ function humanDistance(distance_in_meters) {
         const rounded = Math.round(distance_in_meters/1000);
         return `${rounded}km`;
     }
+}
+
+function humanDistanceTime(distance_in_meters) {
+    // Estimation is about 4km per hour, so 66m per minute
+    return Math.round(distance_in_meters / 66);
 }
 
 function getApiServer() {

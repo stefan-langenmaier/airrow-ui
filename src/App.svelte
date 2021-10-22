@@ -49,9 +49,11 @@
 		--background-color-menu: #f2f4f8;
 		--background-color-submenu: #ffffff;
 		--background-color-button: #0093d7;
+		--background-color-button-alt: #f2f4f8;
 		--font-color:  #8d969c;
 		--font-color-active: #0093d7;
 		--font-color-button: #ffffff;
+		--font-color-button-alt: #80898f;
 		--font-color-bold: #5d5f63;
 		--font-color-normal: #80898f;
 	}

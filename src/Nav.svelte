@@ -1,167 +1,158 @@
 <script>
-	import { fade } from 'svelte/transition';
-	import * as Util from './util.js'
+	import {onMount, onDestroy} from "svelte";
+	import { _ } from 'svelte-i18n';
+	import {LeafletMap, TileLayer, Marker} from 'svelte-leafletjs';
+	import L from 'leaflet';
+	import { screen } from './state.js';
+	import * as Util from './util.js';
 
 	export let airrow;
-
-	let navState = {
-		direction: 0,
-	};
-
-	let status = airrow.status;
-	let rating = "";
-	let isUploadingRating = false;
+	let targetPromise = airrow.getTarget(airrow.targetRefCode);
+	airrow.registerPositionUpdate(handlePositionUpdate);
 	
+	let self = null;
+	let target = null;
+
+	const mapOptions = {
+		center: [49.02138, 12.10181],
+		zoom: 16,
+	};
+	const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+	const tileLayerOptions = {
+		minZoom: 0,
+		maxZoom: 20,
+		maxNativeZoom: 19,
+		attribution: "© OpenStreetMap contributors",
+	};
+	const iconOptions = L.icon({
+		iconUrl: '/assets/icons/map/marker-icon.png',
+		shadowUrl: '/assets/icons/map/shadow-default.png',
+		shadowAnchor: [20, 20]
+	});
+
+	const selfIconOptions = L.icon({
+		iconUrl: '/assets/icons/map/marker-self.png',
+		shadowUrl: '/assets/icons/map/shadow-self.png',
+		shadowAnchor: [20, 20]
+	});
+
+	function handlePositionUpdate(pos) {
+		self = {
+			location: {
+				lat: pos.coords.latitude,
+				lon: pos.coords.longitude
+			}
+		};
+		navState = airrow.getNavState();
+		if (airrow.hasFoundTarget(navState)) {
+			$screen = "view";
+			clearInterval(updateWatch);
+			updateWatch = null;
+		}
+		handleMapChange();
+	}
+
 	let updateWatch = null;
 
-	resetNavigation();
+	if (updateWatch === null) {
+		updateWatch = setInterval(() => {
+			updateNavigation();
+		}, 100);
+	}
 
 	function updateNavigation() {
 		navState = airrow.getNavState();
 		if (airrow.hasFoundTarget(navState)) {
 			clearInterval(updateWatch);
 			updateWatch = null;
+			$screen = "view";
 		}
 	}
 
-	function toggleRating(evt) {
-		const targetValue = evt.target.value;
-		if (targetValue == rating) {
-			rating = "";
+	function handleMapChange() {
+		const map = leafletMap.getMap();
+		if (target != null && self != null) {
+			map.fitBounds([
+				[self.location.lat, self.location.lon],
+				[target.location.lat, target.location.lon]
+			]);
 		}
 	}
 
-	function resetNavigation() {
-		airrow.resetPositionState();
-		rating = "";
-		navState = {
-			direction: 0,
-		};
-		updateNavigation();
-		if (updateWatch === null) {
-			updateWatch = setInterval(() => {
-				updateNavigation();
-			}, 100);
-		}
-		isUploadingRating = false;
-	}
+	let leafletMap;
 
-	function handleRating() {
-		if (isUploadingRating) {
-			return;
-		}
-		isUploadingRating = true;
-		const ratingUpload = airrow.rate(rating, navState.target.refCode);
-		
-		ratingUpload.then(() => {
-			resetNavigation();
-		}).catch(() => {
-			resetNavigation();
+	onMount(() => {
+		targetPromise.then(data => {
+			target = data;
+			if (!target.location) {
+				target.location = {
+					lat: 49.02138,
+					lon: 12.10181
+				}
+			}
 		});
+		handleMapChange();
+    });
+
+	onDestroy(() => {
+		// important for cleanup
+		// do not remove
+	});
+
+	function switchScreen(s) {
+		$screen = s;
 	}
 
-	$: {
-		status = Util.filterEmojiInput(status);
-		airrow.status = status;
-	}
-
+	let navState = {
+		direction: 0,
+	};
+	
 </script>
 
-<div class="screen" class:found={airrow.hasFoundTarget(navState)} transition:fade={{ duration: 1000 }}>
-	{#if isUploadingRating}
-	<div class="poi" transition:fade={{ duration: 1000 }}>
-		<span class="loading">⏳</span>
-	</div>
-	{:else} 
-		{#if airrow.hasFoundTarget(navState)}
-			{#if rating === ""}
-			<div class="poi" transition:fade={{ duration: 1000 }}>
-				{#if airrow.hasDownloadLink(navState)}
-				<span>
-					{#if Util.isImage(navState.target.mimeType)}
-					<img class="media" src="{airrow.getDownloadLink(navState)}" alt="" />
-					{:else if Util.isAudio(navState.target.mimeType)}
-					<!-- svelte-ignore a11y-media-has-caption -->
-					<audio class="media" controls src="{airrow.getDownloadLink(navState)}" />
-					{:else if Util.isVideo(navState.target.mimeType)}
-					<!-- svelte-ignore a11y-media-has-caption -->
-					<video class="media" controls src="{airrow.getDownloadLink(navState)}" />
-					{:else if Util.isModel(navState.target.mimeType)}
-					<model-viewer src="{airrow.getDownloadLink(navState)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls></model-viewer>
-					{:else if Util.isLink(navState.target.mimeType)}
-						{#await Util.get(airrow.getDownloadLink(navState))}
-						<span class="loading">⏳</span>
-						{:then link}
-							{#if Util.isYoutubeLink(link)}
-							<iframe title="inlined-video" src="{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-							{:else}
-							<a href="{link}" target="_blank">🔗↗️</a>
-							{/if}
-						{/await}
-					{:else}
-					<span class="target">🏁</span>
-					{/if}
-				</span>
-				{:else}
-				<span class="target">🏁</span>
-				{/if}
-			</div>
-			{:else}
-			<div class="poi" in:fade={{ duration: 1000 }}>
-				<span class="continue" on:click={handleRating}>▶️</span>
-			</div>
+<div class="screen">
+	<div class="map">
+		<LeafletMap bind:this={leafletMap} options={mapOptions}>
+			<TileLayer url={tileUrl} options={tileLayerOptions}/>
+			{#if target}
+				<Marker icon={iconOptions} latLng={[target.location.lat, target.location.lon]}>
+				</Marker>
 			{/if}
-		<div class="rating">
+			{#if self}
+				<Marker icon={selfIconOptions} latLng={[self.location.lat, self.location.lon]}>
+				</Marker>
+			{/if}
+		</LeafletMap>
+	</div>
+	<div class="info">
+		<div class="direction">
 			<span>
-				<label>
-					<input type="radio" bind:group={rating} value="REPORT" on:click={toggleRating}>
-					<span>🚫</span>
-				</label>
-				
-				<label>
-					<input type="radio" bind:group={rating} value="DOWN" on:click={toggleRating}>
-					<span>👎</span>
-				</label>
-				
-				<label>
-					<input type="radio" bind:group={rating} value="UP" on:click={toggleRating}>
-					<span>👍</span>
-				</label>
+				<img src="/assets/images/nav/arrow.svg" alt="" style="transform: rotate({navState.direction}deg)"/>
 			</span>
 		</div>
-		{:else}
-		<div class="nav">
-			<div class="target">
-				{#if navState.target && navState.target.status}
-				<span>{navState.target.status}</span>
-				{:else}
-				<span class="inactive">🎯</span>
-				{/if}
-			</div>
-			<div class="direction">
-				<span style="transform: rotate({navState.direction}deg)">ˆ</span>
-			</div>
-			<div class="status">
-				<span>
-					<input type="text" bind:value={status} placeholder="🗣️" size="5"/>
-				</span>
-			</div>
-		</div>
-		<div class="info">
+		<div class="distance">
 			{#if navState.geo_distance !== undefined}
-			<span>{Util.humanDistance(navState.geo_distance)}</span>
+			<h2>{$_("nav.info.object-distance", { values: { distance: Util.humanDistance(navState.geo_distance) } })}</h2>
+				{#if Util.humanDistanceTime(navState.geo_distance) < 2}
+				<p>{$_("nav.info.eta-lt-2min")}</p>
+				{:else}
+				<p>{$_("nav.info.eta", { values: { time: Util.humanDistanceTime(navState.geo_distance) } })}</p>
+				{/if}
+			{:else}
+			<p>{$_("nav.info.wait-for-location")}</p>
 			{/if}
 		</div>
-		{/if}
-	{/if}
+		<div class="action">
+			<button on:click="{() => switchScreen('map')}">{$_("nav.info.stop-navigation")}</button>
+		</div>
+	</div>
 </div>
 
 <style>
-	.nav {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 3fr 2fr;
 
+	.screen {
+		grid-template-rows: 2fr 1fr;
+	}
+	.map {
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 1;
@@ -169,153 +160,55 @@
 	}
 
 	.info {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 2;
 		grid-row-end: -1;
-	}
 
-	.poi {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
+		position: relative;
+		box-shadow: 0 0 1em;
+		z-index: 1000;
 
-		grid-column-start: 1;
-		grid-column-end: -1;
-		grid-row-start: 1;
-		grid-row-end: 2;
-	}
-
-	.rating {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 2;
-		grid-row-end: -1;
-	}
-
-	.target {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
-		grid-column-start: 1;
-		grid-column-end: -1;
-		grid-row-start: 1;
-		grid-row-end: 2;
-	}
-
-	.target span {
-		font-size: 5vh;
-		margin: auto;
+		background-color: var(--background-color-menu);
+		text-align: center;
 	}
 
 	.direction {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
-		grid-column-start: 1;
-		grid-column-end: -1;
-		grid-row-start: 2;
-		grid-row-end: 3;
-	}
-
-	.direction span {
-		font-size: 25vh;
+		position: absolute;
+		z-index: 1001;
+		width: 12vw;
+		height: 12vw;
+		padding: 3vw;
+		transform: translateY(-50%);
+		left: 0;
+		right: 0;
 		margin: auto;
+
+		border-radius: 100%;
+		box-shadow: 0 0 1em;
+		background-color: var(--background-color-button);
 	}
 
-	.status {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-
-		grid-column-start: 1;
-		grid-column-end: -1;
-		grid-row-start: 3;
-		grid-row-end: -1;
+	.direction img {
+		width: 100%;
+		height: 100%;
 	}
 
-	.status span {
-		font-size: 5vh;
-		margin: auto;
+	h2 {
+		margin-top: 6vh;
+		margin-bottom: 1vh;
 	}
 
-	.info span {
-		font-size: 4vh;
-		margin: auto;
+	p {
+		margin-top: 1vh;
 	}
 
-	.inactive {
-		opacity: 0.2;
-	}
-
-	.poi span {
-		margin: auto;
-	}
-
-	span.target {
-		font-size: 40vh;
-	}
-
-	.rating span {
-		margin: auto;
-		font-size: 5vh;
-		padding: 1vh;
-	}
-
-	.rating input[type=radio] {
-  		display: none;
-	}
-
-	input[type="radio"]:checked + span {
-  		background-color: rgba(0,0,0,.5);
-	}
-
-	.rating label {
-		display: inline-block;
-	}
-
-	.continue {
-		font-size: 40vh;
-	}
-
-	.loading {
-		font-size: 40vh;
-	}
-
-	.poi a {
-		font-size: 20vh;
-	}
-
-	.found {
-		background: radial-gradient(circle at 50%, lightgrey, orange 100%);;
-	}
-
-	.poi span img {
-		max-width: 90vw;
-		max-height: 50vh;
-	}
-
-	.poi span iframe {
-		width: 90vw;
-		height: 50vh;
-	}
-
-	.poi span model-viewer {
-		width: 90vw;
-		height: 50vh;
-	}
-
-	.poi span audio {
-		width: 90vw;
+	.action button {
+		padding-top: 0em;
+		padding-bottom: 0em;
+		background: var(--background-color-button-alt);
+		color: var(--font-color-button-alt);
+		font-size: medium;
+		font-weight: normal;
 	}
 </style>

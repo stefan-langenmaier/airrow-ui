@@ -42,9 +42,9 @@
 		$screen = 'nav';
 	}
 
-	function viewPoint(refCode) {
+	function showDetails(refCode) {
 		airrow.targetRefCode = refCode;
-		$screen = 'view';
+		$screen = 'details';
 	}
 
 	function handleMapChange() {
@@ -155,9 +155,8 @@
 				</div>
 			</div>
 			<div class="details">
-				<a href="/#" on:click={() => viewPoint(selection.refCode)}>
-					<img src="/assets/icons/map/info.svg" alt="{$_('map.popup.info')}" />
-					{$_('map.popup.more-about-the-object')}
+				<a href="/#" on:click={() => showDetails(selection.refCode)}>
+					<img src="/assets/icons/map/info.svg" alt="{$_('map.popup.info')}" />{$_('map.popup.more-about-the-object')}
 				</a>
 			</div>
 		</div>

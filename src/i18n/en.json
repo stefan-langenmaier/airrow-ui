@@ -76,5 +76,17 @@
             "wait-for-location": "Waiting for location data",
             "stop-navigation": "Quit navigation"
         }
+    },
+    "view": {
+        "media": {
+            "activate-ar": "Activate AR",
+            "close": "Close"
+        },
+        "description": {
+            "object-reached": "Object reached",
+            "share": "Share",
+            "like": "Favorite",
+            "more-about-the-object": "More about the object"
+        }
     }
 }

@@ -1,7 +1,9 @@
 <script>
+	import { _ } from 'svelte-i18n';
+	import '@google/model-viewer';
+
 	import { screen } from './state.js';
 	import * as Util from './util.js';
-	import '@google/model-viewer';
 
 	export let airrow;
 	let targetPromise = airrow.getTarget(airrow.targetRefCode);
@@ -27,9 +29,7 @@
 			<video controls src="{airrow.getTargetDownloadLink(target)}" />
 			{:else if Util.isModel(target.mimeType)}
 			<model-viewer src="{airrow.getTargetDownloadLink(target)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="/assets/images/view/model-background-default.jpg" poster="/assets/images/view/preview-default.jpg">
-				<button slot="ar-button">
-					AR aktivieren
-				</button>
+				<button slot="ar-button">{$_("view.media.activate-ar")}</button>
 			</model-viewer>
 			{:else if Util.isLink(target.mimeType)}
 				{#await Util.get(airrow.getTargetDownloadLink(target))}
@@ -50,12 +50,12 @@
 		{/if}
 		<div class="action">
 			<div class="close" on:click="{() => switchScreen('map')}">
-				<img src="/assets/icons/map/close.svg" alt="Schliessen" />
+				<img src="/assets/icons/map/close.svg" alt="{$_("view.media.close")}" />
 			</div>
 		</div>
 		<div class="description">
 			<div class="description__status">
-				<p>Kunstwerk erreicht</p>
+				<p>{$_("view.description.object-reached")}</p>
 			</div>
 			<div class="description__title">
 				<h1>echo on survival</h1>
@@ -63,15 +63,15 @@
 			<hr />
 			<div class="description__action">
 				<div class="share">
-					<img src="/assets/icons/map/share.svg" alt="Teilen" />
+					<img src="/assets/icons/map/share.svg" alt="{$_("view.description.share")}" />
 				</div>
 				<div class="like">
-					<img src="/assets/icons/map/like.svg" alt="Markieren" />
+					<img src="/assets/icons/map/like.svg" alt="{$_("view.description.like")}" />
 				</div>
 			</div>
 			<div class="description__more">
 				<a href="/#" on:click="{() => switchScreen('details')}">
-					<img src="/assets/icons/map/info.svg" alt="Mehr" />Mehr zum Kunstwerk
+					<img src="/assets/icons/map/info.svg" alt="Mehr" />{$_("view.description.more-about-the-object")}
 				</a>
 			</div>
 		</div>

@@ -76,5 +76,17 @@
             "wait-for-location": "Warte auf Standortdaten",
             "stop-navigation": "Navigation beenden"
         }
+    },
+    "view": {
+        "media": {
+            "activate-ar": "AR aktivieren",
+            "close": "Schliessen"
+        },
+        "description": {
+            "object-reached": "Kunstwerk erreicht",
+            "share": "Teilen",
+            "like": "Markieren",
+            "more-about-the-object": "Mehr zum Kunstwerk"
+        }
     }
 }

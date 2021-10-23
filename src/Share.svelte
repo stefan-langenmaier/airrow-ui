@@ -1,8 +1,4 @@
 <script>
-	import {fade} from 'svelte/transition'
-	
-	import * as Util from './util.js'
-
 	import { screen } from './state.js';
 	
 	export let airrow;

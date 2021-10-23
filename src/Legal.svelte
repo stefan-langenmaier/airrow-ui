@@ -1,6 +1,4 @@
 <script>
-	import {fade} from 'svelte/transition'
-
 	import { accepted } from './state.js';
 	import * as Util from './util.js'
 
@@ -16,7 +14,7 @@
 	}
 </script>
 
-<div class="screen" transition:fade="{{duration: 1000}}">
+<div class="screen">
 	{#if step === "welcome"}
 	<div class="step">
 		<div class="header"></div>

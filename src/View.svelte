@@ -26,7 +26,11 @@
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video controls src="{airrow.getTargetDownloadLink(target)}" />
 			{:else if Util.isModel(target.mimeType)}
-			<model-viewer src="{airrow.getTargetDownloadLink(target)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="/assets/images/view/model-background-default.jpg" poster="/assets/images/view/preview-default.jpg"></model-viewer>
+			<model-viewer src="{airrow.getTargetDownloadLink(target)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="/assets/images/view/model-background-default.jpg" poster="/assets/images/view/preview-default.jpg">
+				<button slot="ar-button">
+					AR aktivieren
+				</button>
+			</model-viewer>
 			{:else if Util.isLink(target.mimeType)}
 				{#await Util.get(airrow.getTargetDownloadLink(target))}
 				<span class="loading">⏳</span>
@@ -165,5 +169,15 @@
 
 	.description__title h1 {
 		margin-top: 0em;
+	}
+
+	.media model-viewer button {
+		position: absolute;
+		top: 0.5em;
+		left: 1em;
+		padding: 0.5em;
+		max-height: fit-content;
+    	max-width: fit-content;
+		border: 0px;
 	}
 </style>

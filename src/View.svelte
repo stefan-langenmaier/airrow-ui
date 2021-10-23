@@ -177,7 +177,7 @@
 		left: 1em;
 		padding: 0.5em;
 		max-height: fit-content;
-    	max-width: fit-content;
+		max-width: fit-content;
 		border: 0px;
 	}
 </style>

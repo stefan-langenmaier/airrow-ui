@@ -45,9 +45,9 @@
 		};
 		navState = airrow.getNavState();
 		if (airrow.hasFoundTarget(navState)) {
-			$screen = "view";
 			clearInterval(updateWatch);
 			updateWatch = null;
+			$screen = "view";
 		}
 		handleMapChange();
 	}

@@ -153,7 +153,7 @@ class Airrow {
               "lat": this.latestPosition.coords.latitude,
               "lon": this.latestPosition.coords.longitude
             },
-            "status": this.status,
+            "targetRefCode": this.targetRefCode,
             "accuracy": 10 //this.latestPosition.coords.accuracy
           };
 
@@ -336,6 +336,13 @@ class Airrow {
         return `${this.apiServer}/download/${target.fileHash}`
     }
 
+    getTargetDownloadLink(target, type) {
+        if (!this.hasTargetDownloadLink(target)) {
+            return "#";
+        }
+        return `${this.apiServer}/download/${type}/${target.fileHash}`
+    }
+
     hasDownloadLink(navState) {
         if (navState === undefined ||  navState === null) {
             return false;
@@ -479,7 +486,11 @@ class Airrow {
     async getTarget(refCode) {
         const params = {
             "uuid": this.sessionId,
-            "refCode": refCode
+            "refCode": refCode,
+            "location": {
+                "lat": this.latestPosition.coords.latitude,
+                "lon": this.latestPosition.coords.longitude
+            },
         };
 
         const res = await fetch(`${this.apiServer}/refresh/target`, {

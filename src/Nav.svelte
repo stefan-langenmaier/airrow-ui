@@ -150,7 +150,7 @@
 <style>
 
 	.screen {
-		grid-template-rows: 2fr 1fr;
+		grid-template-rows: 3fr 1fr;
 	}
 	.map {
 		grid-column-start: 1;

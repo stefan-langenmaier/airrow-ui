@@ -16,23 +16,23 @@
 <div class="screen">
 	{#await targetPromise then target}
 	<div class="poi">
-		{#if airrow.hasTargetDownloadLink(target)}
+		{#if airrow.hasTargetDownloadLink(target.object)}
 		<div class="media">
-			{#if Util.isImage(target.mimeType)}
+			{#if Util.isImage(target.object.mimeType)}
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<img src="{airrow.getTargetDownloadLink(target)}"/>
-			{:else if Util.isAudio(target.mimeType)}
+			<img src="{airrow.getTargetDownloadLink(target, "object")}"/>
+			{:else if Util.isAudio(target.object.mimeType)}
 			<!-- svelte-ignore a11y-media-has-caption -->
-			<audio controls src="{airrow.getTargetDownloadLink(target)}" />
-			{:else if Util.isVideo(target.mimeType)}
+			<audio controls src="{airrow.getTargetDownloadLink(target.object, "object")}" />
+			{:else if Util.isVideo(target.object.mimeType)}
 			<!-- svelte-ignore a11y-media-has-caption -->
-			<video controls src="{airrow.getTargetDownloadLink(target)}" />
-			{:else if Util.isModel(target.mimeType)}
-			<model-viewer src="{airrow.getTargetDownloadLink(target)}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="/assets/images/view/model-background-default.jpg" poster="/assets/images/view/preview-default.jpg">
+			<video controls src="{airrow.getTargetDownloadLink(target.object, "object")}" />
+			{:else if Util.isModel(target.object.mimeType)}
+			<model-viewer src="{airrow.getTargetDownloadLink(target.object, "object")}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="{airrow.getTargetDownloadLink(target.background, "background")}" poster="{airrow.getTargetDownloadLink(target.preview, "preview")}">
 				<button slot="ar-button">{$_("view.media.activate-ar")}</button>
 			</model-viewer>
 			{:else if Util.isLink(target.mimeType)}
-				{#await Util.get(airrow.getTargetDownloadLink(target))}
+				{#await Util.get(airrow.getTargetDownloadLink(target.object, "object"))}
 				<span class="loading">⏳</span>
 				{:then link}
 					{#if Util.isYoutubeLink(link)}
@@ -58,7 +58,7 @@
 				<p>{$_("view.description.object-reached")}</p>
 			</div>
 			<div class="description__title">
-				<h1>echo on survival</h1>
+				<h1>{target.objectName}</h1>
 			</div>
 			<hr />
 			<div class="description__action">

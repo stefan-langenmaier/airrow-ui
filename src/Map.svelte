@@ -129,19 +129,16 @@
 			</div>
 			<div class="description">
 				<div class="overview">
-					<h1>echo on survival</h1>
+					<h1>{selection.objectName}</h1>
 					
-					<p>
-						Hemauerstraße 128<br>
-						93047 Regensburg
-					</p>
+					<p>{selection.objectStreet}<br>{selection.objectPlace}</p>
 				</div>
 			</div>
 			<div class="routing">
 				<button on:click={() => startNav(selection.refCode)}>{$_('map.popup.start-routing')}</button>
 				<div class="estimation">
 					<p>
-						{$_('map.popup.distance-estimation', { values: { minutes: "15" } })}
+						{$_('map.popup.distance-estimation', { values: { minutes: Util.humanDistanceTime(selection.distance) } })}
 					</p>
 				</div>
 			</div>

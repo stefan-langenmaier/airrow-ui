@@ -19,14 +19,14 @@
 			<img src="/assets/icons/preview/like.svg" alt="Markieren" />
 		</div>
 	</div>
-	<div class="details__teaser"></div>
+	<div class="details__teaser" style="background-image: url({airrow.getTargetDownloadLink(marker.preview, "preview")});"></div>
 	<div class="details__description">
 		<div class="details__about">
 			<div class="details__title">
-				<h2>echo on survival</h2>
+				<h2>{marker.objectName}</h2>
 			</div>
 			<div class="details__artist">
-				<p>Barbara Sophie Höcherl</p>
+				<p>{marker.artistName}</p>
 			</div>
 		</div>
 		<div class="details__distance">{Util.humanDistance(marker.distance)} &gt;</div>

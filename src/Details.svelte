@@ -1,5 +1,5 @@
 <script>
-	import { _ } from 'svelte-i18n';
+	import { _, locale } from 'svelte-i18n';
 
 	import { screen } from './state.js';
 	import Menu from './Menu.svelte';
@@ -31,7 +31,7 @@
 <div class="screen">
 	{#await targetPromise then target}
 	<div class="poi">
-		<div class="header">
+		<div class="header" style="background-image: url({airrow.getTargetDownloadLink(target.preview, "preview")});">
 			<div class="header__action">
 				<div class="share">
 					<img src="/assets/icons/details/share.svg" alt="{$_('details.action.share')}" />
@@ -47,12 +47,12 @@
 		</div>
 		<div class="description">
 			<div class="description__title">
-				<h1>echo on survival</h1>
+				<h1>{target.objectName}</h1>
 			</div>
 			<div class="description__element">
 				<div class="description__header" on:click="{toggleArtist}">
 					<div class="description__subtitle">
-						<img src="/assets/icons/details/artist.svg" alt="" />Barbara Sophie Höcherl
+						<img src="/assets/icons/details/artist.svg" alt="" />{target.artistName}
 					</div>
 					<div class="description__subaction">
 						{#if isArtistOpen}
@@ -65,15 +65,11 @@
 				<div class:closed="{!isArtistOpen}">
 					<hr/>
 					<div class="description__content">
-						<p>Barbara Sophie Höcherl 
-							wurde 1983 in Wörth a.d. 
-							Donau geboren und hat an 
-							der Ladislav-Sutnar-
-							Fakultät in Pilsen 
-							Illustration und Grafik 
-							studiert. Seit 2012 arbeitet 
-							sie hauptberuflich als freischaffende Künstlerin und hat sich seitdem nicht nur als feste Größe etabliert, sondern auch die Herzen des Regensburger Kunstpublikums erobert.
-						</p>
+						{#if $locale === 'de'}
+						<p>{target.artistIntroDe}</p>
+						{:else}
+						<p>{target.artistIntroEn}</p>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -93,15 +89,11 @@
 				<div class:closed="{!isIdeaOpen}">
 					<hr/>
 					<div class="description__content">
-						<p>Barbara Sophie Höcherl 
-						wurde 1983 in Wörth a.d. 
-						Donau geboren und hat an 
-						der Ladislav-Sutnar-
-						Fakultät in Pilsen 
-						Illustration und Grafik 
-						studiert. Seit 2012 arbeitet 
-						sie hauptberuflich als freischaffende Künstlerin und hat sich seitdem nicht nur als feste Größe etabliert, sondern auch die Herzen des Regensburger Kunstpublikums erobert.
-						</p>
+						{#if $locale === 'de'}
+						<p>{target.objectIdeaDe}</p>
+						{:else}
+						<p>{target.objectIdeaEn}</p>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -121,15 +113,8 @@
 				<div class:closed="{!isLocationOpen}">
 					<hr/>
 					<div class="description__content">
-						<p>Barbara Sophie Höcherl 
-							wurde 1983 in Wörth a.d. 
-							Donau geboren und hat an 
-							der Ladislav-Sutnar-
-							Fakultät in Pilsen 
-							Illustration und Grafik 
-							studiert. Seit 2012 arbeitet 
-							sie hauptberuflich als freischaffende Künstlerin und hat sich seitdem nicht nur als feste Größe etabliert, sondern auch die Herzen des Regensburger Kunstpublikums erobert.
-						</p>
+						<p>{target.objectPlace}</p>
+						<p>{target.objectStreet}</p>
 					</div>
 				</div>
 			</div>

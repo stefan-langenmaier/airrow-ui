@@ -59,12 +59,16 @@
 	}
 
 	function handlePositionUpdate(pos) {
+		if (self == null) {
+			markers = airrow.getPublicPoints(pos);
+		}
 		self = {
 			location: {
 				lat: pos.coords.latitude,
 				lon: pos.coords.longitude
 			}
 		};
+		
 	}
 
 	function centerPosition() {

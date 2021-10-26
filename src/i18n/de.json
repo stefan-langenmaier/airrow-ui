@@ -1,6 +1,6 @@
 {
     "app": {
-        "title": "Ärro"
+        "title": "DAGVA"
     },
     "menu": {
         "main": {
@@ -88,5 +88,8 @@
             "like": "Markieren",
             "more-about-the-object": "Mehr zum Kunstwerk"
         }
+    },
+    "list": {
+        "title": "Alle Kunstwerke"
     }
 }

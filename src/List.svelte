@@ -18,7 +18,7 @@
 <div class="screen">
 	<div class="details">
 		<div class="details__heading">
-			<h1>Alle Kunstwerke</h1>
+			<h1>{$_('list.title')}</h1>
 		</div>
 
 		<div class="details__list">

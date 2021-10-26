@@ -1,6 +1,6 @@
 {
     "app": {
-        "title": "Ärro"
+        "title": "DAGVA"
     },
     "menu": {
         "main": {
@@ -88,5 +88,8 @@
             "like": "Favorite",
             "more-about-the-object": "More about the object"
         }
+    },
+    "list": {
+        "title": "All objects"
     }
 }

@@ -31,14 +31,14 @@
 			<model-viewer src="{airrow.getTargetDownloadLink(target.object, "object")}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="{airrow.getTargetDownloadLink(target.background, "background")}" poster="{airrow.getTargetDownloadLink(target.preview, "preview")}">
 				<button slot="ar-button">{$_("view.media.activate-ar")}</button>
 			</model-viewer>
-			{:else if Util.isLink(target.mimeType)}
+			{:else if Util.isLink(target.object.mimeType)}
 				{#await Util.get(airrow.getTargetDownloadLink(target.object, "object"))}
 				<span class="loading">⏳</span>
 				{:then link}
 					{#if Util.isYoutubeLink(link)}
 					<iframe title="inlined-video" src="{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 					{:else}
-					<a href="{link}" target="_blank">🔗↗️</a>
+					<a href="{link}" target="_blank"><img src="{airrow.getTargetDownloadLink(target.preview, "preview")}" alt=""></a>
 					{/if}
 				{/await}
 			{:else}
@@ -179,5 +179,18 @@
 		max-height: fit-content;
 		max-width: fit-content;
 		border: 0px;
+	}
+
+	.media a {
+		width: unset;
+		height: unset;
+		margin: auto;
+	}
+
+	.media a img {
+		max-width: 80vw;
+		max-height: 50vh;
+		width: unset;
+		height: unset;
 	}
 </style>

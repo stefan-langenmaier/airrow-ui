@@ -193,7 +193,12 @@
 		margin: 1vw;
 	}
 
-	.description__content p {
+	.description__content p{
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.description__content p:last-of-type {
 		padding-bottom: 4vw;
 	}
 

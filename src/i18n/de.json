@@ -30,7 +30,7 @@
             "more": "Weitere Infos"
         },
         "submenu": {
-            "sponsors": "Sponsoren",
+            "sponsors": "Dank",
             "corona": "Corona",
             "imprint": "Impressum",
             "legal": "Datenschutz & AGB"
@@ -110,5 +110,8 @@
     },
     "list": {
         "title": "Alle Kunstwerke"
+    },
+    "sponsors": {
+        "title": "Dank"
     }
 }

@@ -1,21 +1,15 @@
 <script>
+	import { _ } from 'svelte-i18n';
+
 	import Menu from './Menu.svelte';
 </script>
 
 <div class="screen">
 	<div class="sponsors">
-		<h1 class="sponsors_heading">Unsere Sponsoren</h1>
+		<h1 class="sponsors_heading">{$_('sponsors.title')}</h1>
 
 		<div class="sponsors__list">
 			<div class="sponsors__innerlist">
-				<div class="sponsors__element">
-					<a href="https://www.regensburg.de/" target="_blank">
-						<span class="sponsors__image">
-							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
-						</span>
-						<span class="sponsors__name">Stadt Regensburg</span>
-					</a>
-				</div>
 				<div class="sponsors__element">
 					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
 						<span class="sponsors__image">
@@ -46,6 +40,46 @@
 							<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
 						</span>
 						<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.regensburg.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
+						</span>
+						<span class="sponsors__name">Stadt Regensburg</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.oth-regensburg.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/oth-regensburg.jpg" alt="Logo der OTH Regensburg">
+						</span>
+						<span class="sponsors__name">OTH Regensburg</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.uni-regensburg.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/uni-regensburg.png" alt="Logo der Universität Regensburg">
+						</span>
+						<span class="sponsors__name">Universität Regensburg</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.regensburg.de/welterbe" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/welterbe-regensburg.png" alt="Logo Welterbe Regensburg">
+						</span>
+						<span class="sponsors__name">Welterbe Regensburg</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.regensburg-tourismus.gmbh/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/regensburg-tourismus-gmbh.jpg" alt="Logo der Regensburg Tourismus GmbH">
+						</span>
+						<span class="sponsors__name">Regensburg Tourismus GmbH</span>
 					</a>
 				</div>
 			</div>

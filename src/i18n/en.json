@@ -30,7 +30,7 @@
             "more": "More"
         },
         "submenu": {
-            "sponsors": "Sponsors",
+            "sponsors": "Thanks",
             "corona": "Corona",
             "imprint": "Imprint",
             "legal": "Legal"
@@ -110,5 +110,8 @@
     },
     "list": {
         "title": "All objects"
+    },
+    "sponsors": {
+        "title": "Thanks to"
     }
 }

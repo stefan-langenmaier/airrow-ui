@@ -1,4 +1,6 @@
 <script>
+	import { _ } from 'svelte-i18n';
+
 	import { accepted } from './state.js';
 	import * as Util from './util.js'
 
@@ -19,33 +21,80 @@
 	<div class="step">
 		<div class="header"></div>
 		<div class="description">
-			<h1>donumenta art goes VR/AR</h1>
+			<h1>{$_('legal.welcome.title')}</h1>
 
-			<p>
-				Herzlich Wilkommen in der augmented reality app dagva.donumenta.de 
-				2017 initiierte und etablierte der donumenta e.V. das internationale Artist in Residence-Programm (AiR) "HERITAGE TODAY/TOMORROW" für temporäre Interventionen im öffentlichen Raum in Regensburg. Seither kommen jährlich 4-5 internationale Kuenstler*innen und entwickeln Konzepte und Projekte, die im öffentlichen Raum in Regensburg realisiert werden. 
-				In dieser App haben Sie die Möglichkeit das Engagement des donumenta e.V. ortsunabhängig im Internet abzurufen.
-				Nach Freigabe ihres Standortes werden sia via GPS zu den Kunstwerken geführt.  
-				Wenn Sie den Zielort erreicht haben, können Sie mit Hilfe der App Anwendung die temporären bereits rückgebauten Kunstwerke virtuell wieder zum Leben zu erwecken.
-				Im Menü werden je nach Standort eine oder mehrere verschiedene 3D Installationen in AR-Ebenen angezeigt.
-			</p>
+			<p>{$_('legal.welcome.p1')}</p>
+			<p>{$_('legal.welcome.p2')}</p>
+			<p>{$_('legal.welcome.p3')}</p>
+			<p>{$_('legal.welcome.p4')}</p>
 		</div>
 		<div class="nav">
-			<button on:click="{() => next('legal')}">Weiter</button>
+			<button on:click="{() => next('sponsors')}">{$_('legal.next')}</button>
+		</div>
+	</div>
+	{:else if step === "sponsors"}
+	<div class="step">
+		<div class="header"></div>
+		<div class="description">
+			<h1>{$_('legal.sponsors.with-support-from')}</h1>
+
+			<div class="sponsors__element">
+				<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+					<span class="sponsors__image">
+						<img src="/assets/images/sponsors/bundesregierung-kultur-und-medien.svg" alt="Logo für Bundesregierung-Kultur und Medien">
+					</span>
+					<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
+				</a>
+			</div>
+			<div class="sponsors__element">
+				<a href="https://www.soziokultur.de/" target="_blank">
+					<span class="sponsors__image">
+						<img src="/assets/images/sponsors/bundesverband-soziokultur.svg" alt="Logo des Bundesverband Soziokultur">
+					</span>
+					<span class="sponsors__name">Bundesverband Soziokultur</span>
+				</a>
+			</div>
+			<div class="sponsors__element">
+				<a href="https://www.soziokultur.neustartkultur.de/" target="_blank">
+					<span class="sponsors__image">
+						<img src="/assets/images/sponsors/neustart-kultur.svg" alt="Logo Soziokultur Neustart">
+					</span>
+					<span class="sponsors__name">Bundesverband Soziokultur</span>
+				</a>
+			</div>
+			<div class="sponsors__element">
+				<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+					<span class="sponsors__image">
+						<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
+					</span>
+					<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
+				</a>
+			</div>
+			<div class="sponsors__element">
+				<a href="https://www.regensburg.de/" target="_blank">
+					<span class="sponsors__image">
+						<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
+					</span>
+					<span class="sponsors__name">Stadt Regensburg</span>
+				</a>
+			</div>
+		</div>
+		<div class="nav">
+			<button on:click="{() => next('legal')}">{$_('legal.next')}</button>
 		</div>
 	</div>
 	{:else}
 	<div class="step">
 		<div class="header"></div>
 		<div class="description">
-			<h1>Unsere AGB und Datenschutzerklärung</h1>
+			<h1>{$_('legal.privacy.title')}</h1>
 
 			<p>
-				<a href="https://www.donumenta.de/info/impressum-und-datenschutz/" target="_blank">Impressum und Datenschutz</a>	
+				<a href="{$_('legal.privacy.link')}" target="_blank">{$_('legal.privacy.imprint-and-privacy')}</a>	
 			</p>
 		</div>
 		<div class="nav">
-			<button on:click="{handleLegal}">Ich stimme zu</button>
+			<button on:click="{handleLegal}">{$_('legal.privacy.accept')}</button>
 		</div>
 	</div>
 	{/if}
@@ -68,9 +117,9 @@
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 2;
-		grid-row-end: 3;
+		grid-row-end: -1;
 
-		max-height: calc(var(--vh, 1vh) * 40);
+		max-height: calc(var(--vh, 1vh) * 50);
 		overflow: scroll;
 	}
 
@@ -102,5 +151,28 @@
 		grid-row-end: -1;
 		
 		margin: auto;
+	}
+
+	.sponsors__image img {
+		max-width: 80%;
+		height: 30vh;
+
+		border-style: solid;
+		border-radius: 1em;
+
+		margin: auto;
+		display: block;
+	}
+
+	.sponsors__element a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+		overflow: hidden;
+		color: var(--font-color);
+		margin-bottom: 2em;
+		text-align: center;
 	}
 </style>

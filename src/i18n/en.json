@@ -2,6 +2,25 @@
     "app": {
         "title": "DAGVA"
     },
+    "legal": {
+        "next": "Next",
+        "welcome": {
+            "title": "donumenta art goes VR / AR - dagva",
+            "p1": "Art sites of contemporary interventions in the world heritage Regensburg",
+            "p2": "Welcome to the augmented reality app",
+            "p3": "In 2017, donumenta e.V. initiated the international Artist in Residence program (AiR) \"HERITAGE TODAY/TOMORROW\" for temporary interventions in public space in Regensburg. Since then, 4 to 5 international artists* come every year from the 14 countries of the Danube region and develop project ideas, which can be realized one year later in the public space in Regensburg.",
+            "p4": "In this app you have the possibility to access the engagement of donumenta e.V. location-independent on the internet. After giving access to your location, you will be guided via GPS to the locations of temporary interventions. Once you have reached your destination, you can use the app to virtually bring back to life the artworks that have already been restored. Depending on the location, the menu shows one or more different 3D installations in AR layers."
+        },
+        "sponsors": {
+            "with-support-from": "With support from:"
+        },
+        "privacy": {
+            "title": "Our terms and conditions",
+            "accept": "I accept",
+            "link": "https://www.donumenta.de/en/info/imprint-and-privacy/",
+            "imprint-and-privacy": "Imprint and privacy terms"
+        }
+    },
     "menu": {
         "main": {
             "map": "Map",

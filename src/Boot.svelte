@@ -2,7 +2,7 @@
 	import { addMessages, init, getLocaleFromNavigator } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 
-	import { configured, accepted, booted } from './state.js';
+	import { accepted, booted } from './state.js';
 	import * as Util from './util.js'
 	import en from './i18n/en.json';
 	import de from './i18n/de.json';
@@ -61,7 +61,8 @@
 <div class="screen">
 	{#if startAnimation}
 	<div class="logo" in:fade="{{duration: 1000}}">
-		<img src="/assets/images/logo.png" alt="Donumenta" />
+		<img src="/assets/images/logo.png" alt="donumenta" />
+		<h1>dagva – donumenta goes VR/AR</h1>
 	</div>
 	{/if}
 </div>
@@ -83,6 +84,10 @@
 		margin: auto;
 		max-width: 100vw;
 		max-height: 60vh;
+	}
+
+	.logo h1 {
+		text-align:center;
 	}
 
 </style>

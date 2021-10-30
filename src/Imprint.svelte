@@ -29,9 +29,7 @@
 					</p>
 
 					<h2>Grafik und Konzeption</h2>
-					<p>
-						Coeno GmbH, Anatol Schmid, Stefan Langenmaier
-					</p>
+					<p>Coeno GmbH, Stefan Langenmaier, Anatol Schmid, Annika Zeitler</p>
 
 					<h2>Webredaktion, Social Media, Newsletter</h2>
 					<p>

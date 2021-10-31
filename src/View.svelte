@@ -129,8 +129,10 @@
 		position: absolute;
 
 		bottom: 1em;
-		margin-left: 1em;
-		margin-right: 1em;
+		left: 0px;
+		right: 0px;
+		margin-left: auto;
+		margin-right: auto;
 
 		border-radius: 1em;
 		background-color: white;

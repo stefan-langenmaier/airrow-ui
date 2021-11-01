@@ -156,9 +156,9 @@
 		grid-column-start: 1;
 		grid-column-end: -1;
 		grid-row-start: 2;
-		grid-row-end: 3;
+		grid-row-end: -1;
 
-		max-height: calc(var(--vh, 1vh) * 40);
+		max-height: calc(var(--vh, 1vh) * 50);
 		overflow: scroll;
 	}
 

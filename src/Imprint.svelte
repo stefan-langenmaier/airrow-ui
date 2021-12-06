@@ -12,7 +12,7 @@
 			<div class="description__innerlist">
 				<div class="description__element">
  
-					<h2>dagva.donumenta.de – donumenta art goes VR/AR  ist ein Projekt des donumenta e.V.</h2>
+					<h2>vr.donumenta.de – donumenta art goes VR/AR  ist ein Projekt des donumenta e.V.</h2>
 
 					<p>
 						1. Vorsitzende Regina Hellwig-Schmid<br />

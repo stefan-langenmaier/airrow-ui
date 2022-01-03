@@ -53,7 +53,7 @@
     "corona": {
         "title": "Corona",
         "description": {
-            "warning": "The Corona pandemic is not over yet - currently the number of new infections is rising again. Almost all infections are caused by the delta variant of the virus.",
+            "warning": "The Corona pandemic is not over yet - currently the number of new infections is rising again. Almost all infections are caused by the omicron variant of the virus.",
             "vaccination": "The best protection against the SARS-CoV-2 coronavirus is vaccination! Vaccination against COVID-19 is free of charge and available in many places. ",
 			"protection": "In addition, to prevent the further spread of the coronavirus, it is important,",
 			"p1": "to follow the AHA formula: Keep your distance, observe hygiene, wear a mask - even on vacation,",

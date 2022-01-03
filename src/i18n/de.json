@@ -53,15 +53,15 @@
     "corona": {
         "title": "Corona",
         "description": {
-            "warning": "Die Corona-Pandemie ist noch nicht vorbei – aktuell steigt die Zahl der Neuinfektionen wieder. Fast alle Infektionen werden durch die Delta-Variante des Virus verursacht.",
+            "warning": "Die Corona-Pandemie ist noch nicht vorbei - aktuell steigt die Zahl der Neuinfektionen wieder. Fast alle Infektionen werden durch die Omikron-Variante des Virus verursacht.",
             "vaccination": "Der beste Schutz vor dem Coronavirus SARS-CoV-2 ist die Impfung!\nDie Impfung gegen COVID-19 ist kostenlos und an vielen Orten möglich.",
 			"protection": "Um die weitere Ausbreitung des Coronavirus zu verhindern, ist es darüber hinaus wichtig,",
-            "p1":  "die AHA-Formel zu beachten: Abstand halten, Hygiene beachten, Maske tragen – auch im Urlaub,",
+            "p1":  "die AHA-Formel zu beachten: Abstand halten, Hygiene beachten, Maske tragen - auch im Urlaub,",
             "p2": "uns mit anderen bevorzugt im Freien zu treffen,",
 			"p3": "Testangebote zu nutzen,",
 			"p4": "Reisen in Virusvariantengebiete und Hochinzidenzgebiete zu vermeiden und",
 			"p5": "nach Auslandsreisen die Einreiseregeln einzuhalten.",
-			"join": "Machen Sie mit – so schützen Sie sich und Ihr Umfeld!"
+			"join": "Machen Sie mit - so schützen Sie sich und Ihr Umfeld!"
         }
     },
     "imprint": {

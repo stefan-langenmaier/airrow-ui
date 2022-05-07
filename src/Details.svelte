@@ -66,9 +66,9 @@
 					<hr/>
 					<div class="description__content">
 						{#if $locale === 'de'}
-						<p>{target.artistIntroDe}</p>
+						<p>{@html target.artistIntroDe}</p>
 						{:else}
-						<p>{target.artistIntroEn}</p>
+						<p>{@html target.artistIntroEn}</p>
 						{/if}
 					</div>
 				</div>
@@ -90,9 +90,9 @@
 					<hr/>
 					<div class="description__content">
 						{#if $locale === 'de'}
-						<p>{target.objectIdeaDe}</p>
+						<p>{@html target.objectIdeaDe}</p>
 						{:else}
-						<p>{target.objectIdeaEn}</p>
+						<p>{@html target.objectIdeaEn}</p>
 						{/if}
 					</div>
 				</div>

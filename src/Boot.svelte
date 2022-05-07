@@ -1,5 +1,5 @@
 <script>
-	import { addMessages, init, getLocaleFromNavigator } from 'svelte-i18n';
+	import { addMessages, init, getLocaleFromNavigator, _ } from 'svelte-i18n';
 	import { fade } from 'svelte/transition';
 
 	import { accepted, booted } from './state.js';
@@ -61,8 +61,8 @@
 <div class="screen">
 	{#if startAnimation}
 	<div class="logo" in:fade="{{duration: 1000}}">
-		<img src="/assets/images/logo.png" alt="donumenta" />
-		<h1>dagva – donumenta goes VR/AR</h1>
+		<img src="/assets/images/logo.png" alt="{$_('boot.logo')}" />
+		<h1>{$_('boot.title')}</h1>
 	</div>
 	{/if}
 </div>

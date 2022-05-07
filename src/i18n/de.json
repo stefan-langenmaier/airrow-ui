@@ -1,4 +1,8 @@
 {
+    "boot": {
+        "title": "donumenta goes VR/AR",
+        "logo": "donumenta"
+    },
     "app": {
         "title": "VR.donumenta.de"
     },

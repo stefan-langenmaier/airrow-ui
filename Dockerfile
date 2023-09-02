@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 ARG CUSTOM_API_ENDPOINT
 WORKDIR /app
 COPY ./ /app

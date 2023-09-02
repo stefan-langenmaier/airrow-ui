@@ -11,7 +11,7 @@
 		<div class="sponsors__list">
 			<div class="sponsors__innerlist">
 				<div class="sponsors__element">
-					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+					<a href="https://www.kulturstaatsministerin.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/bundesregierung-kultur-und-medien.svg" alt="Logo für Bundesregierung-Kultur und Medien">
 						</span>
@@ -19,7 +19,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.soziokultur.de/" target="_blank">
+					<a href="https://www.soziokultur.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/bundesverband-soziokultur.svg" alt="Logo des Bundesverband Soziokultur">
 						</span>
@@ -27,7 +27,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.soziokultur.neustartkultur.de/" target="_blank">
+					<a href="https://www.soziokultur.neustartkultur.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/neustart-kultur.svg" alt="Logo Soziokultur Neustart">
 						</span>
@@ -35,7 +35,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+					<a href="https://www.kulturstaatsministerin.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
 						</span>
@@ -43,7 +43,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.regensburg.de/" target="_blank">
+					<a href="https://www.regensburg.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
 						</span>
@@ -51,7 +51,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.oth-regensburg.de/" target="_blank">
+					<a href="https://www.oth-regensburg.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/oth-regensburg.jpg" alt="Logo der OTH Regensburg">
 						</span>
@@ -59,7 +59,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.uni-regensburg.de/" target="_blank">
+					<a href="https://www.uni-regensburg.de/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/uni-regensburg.png" alt="Logo der Universität Regensburg">
 						</span>
@@ -67,7 +67,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.regensburg.de/welterbe" target="_blank">
+					<a href="https://www.regensburg.de/welterbe" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/welterbe-regensburg.png" alt="Logo Welterbe Regensburg">
 						</span>
@@ -75,7 +75,7 @@
 					</a>
 				</div>
 				<div class="sponsors__element">
-					<a href="https://www.regensburg-tourismus.gmbh/" target="_blank">
+					<a href="https://www.regensburg-tourismus.gmbh/" target="_blank" rel="noreferrer">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/regensburg-tourismus-gmbh.jpg" alt="Logo der Regensburg Tourismus GmbH">
 						</span>

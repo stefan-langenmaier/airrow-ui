@@ -47,7 +47,7 @@
 		</span>
 		<span class="menu__text">{$_('menu.main.donumenta')}</span>
 	</a>
-	<a href="https://www.donumenta.de/" target="_blank" class="menu__link">
+	<a href="https://www.donumenta.de/" target="_blank" rel="noreferrer" class="menu__link">
 		<span class="menu__icon">
 			<svg viewBox="0 0 32 32">
 				<use xlink:href="/assets/icons/menu/news.svg#news"></use>
@@ -96,17 +96,17 @@
 				<span class="subpage__icon"><img src="/assets/icons/subpage/imprint.svg" alt="{$_('menu.submenu.imprint')}"/></span>
 				<span class="subpage__text">{$_('menu.submenu.imprint')}</span>
 			</a>
-			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/#c565" target="_blank">
+			<a href="https://www.donumenta.de/info/impressum-und-datenschutz/#c565" target="_blank" rel="noreferrer">
 				<span class="subpage__icon"><img src="/assets/icons/subpage/legal.svg" alt="{$_('menu.submenu.legal')}"/></span>
 				<span class="subpage__text">{$_('menu.submenu.legal')}</span>
 			</a>
 		</div>
 		<hr />
 		<div class="social">
-			<a href="https://instagram.com" target="_blank">
+			<a href="https://instagram.com" target="_blank" rel="noreferrer">
 				<span class="social__icon"><img src="/assets/icons/social/instagram.svg" alt="Instagram"/></span>
 			</a>
-			<a href="https://facebook.com" target="_blank">
+			<a href="https://facebook.com" target="_blank" rel="noreferrer">
 				<span class="social__icon"><img src="/assets/icons/social/facebook.svg" alt="Instagram"/></span>
 			</a>
 		</div>

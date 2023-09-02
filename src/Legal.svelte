@@ -39,7 +39,7 @@
 			<h1>{$_('legal.sponsors.with-support-from')}</h1>
 
 			<div class="sponsors__element">
-				<a href="https://www.regensburg.de/" target="_blank">
+				<a href="https://www.regensburg.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
 					</span>
@@ -47,7 +47,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.stmwi.bayern.de/" target="_blank">
+				<a href="https://www.stmwi.bayern.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/BayStaats.jpg" alt="Bayerisches Staatsministerium für Wirtschaft, Landesentwicklung und Energie">
 					</span>
@@ -55,7 +55,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+				<a href="https://www.kulturstaatsministerin.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/bundesregierung-kultur-und-medien.svg" alt="Logo für Bundesregierung-Kultur und Medien">
 					</span>
@@ -63,7 +63,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.soziokultur.de/" target="_blank">
+				<a href="https://www.soziokultur.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/bundesverband-soziokultur.svg" alt="Logo des Bundesverband Soziokultur">
 					</span>
@@ -71,7 +71,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.soziokultur.neustartkultur.de/" target="_blank">
+				<a href="https://www.soziokultur.neustartkultur.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/neustart-kultur.svg" alt="Logo Soziokultur Neustart">
 					</span>
@@ -79,7 +79,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+				<a href="https://www.kulturstaatsministerin.de/" target="_blank" rel="noreferrer">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
 					</span>
@@ -98,7 +98,7 @@
 			<h1>{$_('legal.privacy.title')}</h1>
 
 			<p>
-				<a href="{$_('legal.privacy.link')}" target="_blank">{$_('legal.privacy.imprint-and-privacy')}</a>	
+				<a href="{$_('legal.privacy.link')}" target="_blank" rel="noreferrer">{$_('legal.privacy.imprint-and-privacy')}</a>	
 			</p>
 		</div>
 		<div class="nav">

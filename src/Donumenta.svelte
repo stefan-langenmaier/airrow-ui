@@ -20,7 +20,7 @@
 						<a href="https://www.facebook.com/donumenta/"><img src="/assets/icons/social/facebook.svg" alt="Facebook"/></a>
 					</div>
 					<div class="description__element newsletter">
-						<a href="https://www.donumenta.de/info/newsletter-anmeldung/" target="_blank">{$_('donumenta.newsletter_subscribe')}</a>
+						<a href="https://www.donumenta.de/info/newsletter-anmeldung/" target="_blank" rel="noreferrer">{$_('donumenta.newsletter_subscribe')}</a>
 					</div>
 				</div>
 			</div>

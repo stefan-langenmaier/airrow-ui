@@ -28,7 +28,7 @@
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video controls src="{airrow.getTargetDownloadLink(target.object, "object")}" />
 			{:else if Util.isModel(target.object.mimeType)}
-			<model-viewer src="{airrow.getTargetDownloadLink(target.object, "object")}" ar ar-modes="webxr scene-viewer quick-look" auto-rotate camera-controls skybox-image="{airrow.getTargetDownloadLink(target.background, "background")}" poster="{airrow.getTargetDownloadLink(target.preview, "preview")}">
+			<model-viewer src="{airrow.getTargetDownloadLink(target.object, "object")}" ar ar-modes="webxr scene-viewer quick-look" autoplay auto-rotate camera-controls skybox-image="{airrow.getTargetDownloadLink(target.background, "background")}" poster="{airrow.getTargetDownloadLink(target.preview, "preview")}">
 				<button slot="ar-button">{$_("view.media.activate-ar")}</button>
 			</model-viewer>
 			{:else if Util.isLink(target.object.mimeType)}
@@ -38,7 +38,7 @@
 					{#if Util.isYoutubeLink(link)}
 					<iframe title="inlined-video" src="{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 					{:else}
-					<a href="{link}" target="_blank"><img src="{airrow.getTargetDownloadLink(target.preview, "preview")}" alt=""></a>
+					<a href="{link}" target="_blank" rel="noreferrer"><img src="{airrow.getTargetDownloadLink(target.preview, "preview")}" alt=""></a>
 					{/if}
 				{/await}
 			{:else}

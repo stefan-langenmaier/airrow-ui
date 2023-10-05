@@ -47,7 +47,7 @@
 				</a>
 			</div>
 			<div class="sponsors__element">
-				<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+				<a href="https://www.stmwi.bayern.de/" target="_blank">
 					<span class="sponsors__image">
 						<img src="/assets/images/sponsors/BayStaats.jpg" alt="Bayerisches Staatsministerium für Wirtschaft, Landesentwicklung und Energie">
 					</span>

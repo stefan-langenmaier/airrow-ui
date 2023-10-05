@@ -11,7 +11,23 @@
 		<div class="sponsors__list">
 			<div class="sponsors__innerlist">
 				<div class="sponsors__element">
+					<a href="https://www.regensburg.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
+						</span>
+						<span class="sponsors__name">Stadt Regensburg</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
 					<a href="https://www.kulturstaatsministerin.de/" target="_blank">
+						<span class="sponsors__image">
+							<img src="/assets/images/sponsors/BayStaats.jpg" alt="Logo Bayerisches Staatsministerium für Wirtschaft, Landesentwicklung und Energie">
+						</span>
+						<span class="sponsors__name">Bayerisches Staatsministerium für Wirtschaft, Landesentwicklung und Energie</span>
+					</a>
+				</div>
+				<div class="sponsors__element">
+					<a href="https://www.stmwi.bayern.de/" target="_blank">
 						<span class="sponsors__image">
 							<img src="/assets/images/sponsors/bundesregierung-kultur-und-medien.svg" alt="Logo für Bundesregierung-Kultur und Medien">
 						</span>
@@ -40,14 +56,6 @@
 							<img src="/assets/images/sponsors/bvs-neustart.svg" alt="Logo Soziokultur Neustart">
 						</span>
 						<span class="sponsors__name">Gefördert von der Beauftragten der Bundesregierung für Kultur und Medien</span>
-					</a>
-				</div>
-				<div class="sponsors__element">
-					<a href="https://www.regensburg.de/" target="_blank">
-						<span class="sponsors__image">
-							<img src="/assets/images/sponsors/stadt-regensburg.jpg" alt="Logo der Stadt Regensburg">
-						</span>
-						<span class="sponsors__name">Stadt Regensburg</span>
 					</a>
 				</div>
 				<div class="sponsors__element">
